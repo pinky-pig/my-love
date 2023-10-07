@@ -1,0 +1,28 @@
+{
+  "name": "unocss-next",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "13.5.3",
+    "p5": "^1.7.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.1.129",
+    "@types/node": "20.7.0",
+    "@types/react": "18.2.22",
+    "@types/react-dom": "18.2.7",
+    "@unocss/postcss": "latest",
+    "eslint": "8.50.0",
+    "eslint-config-next": "13.5.3",
+    "postcss": "8.4.30",
+    "typescript": "5.2.2",
+    "unocss": "latest"
+  }
+}

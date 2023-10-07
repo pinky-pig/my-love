@@ -1,0 +1,25 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.associations": {
+    "*.css": "postcss",
+    "*.tsx": "typescriptreact"
+  },
+  // 设置 tailwindCSS 补全支持
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "style",
+    "ngClass",
+    "extra",
+    "someOtherAttribute"
+  ],
+  "emmet.includeLanguages": {
+    "postcss": "css",
+    "marko": "html,css,vue",
+    // 添加 React 补全
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  }
+}

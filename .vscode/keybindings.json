@@ -1,0 +1,21 @@
+// 将键绑定放在此文件中以覆盖默认值auto[]
+[
+  {
+    "key": "ctrl+shift+alt+q",
+    "command": "editor.emmet.action.mergeLines"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "editor.action.joinLines"
+  },
+  {
+    "key": "alt+e",
+    "command": "cursorEndSelect",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "shift+end",
+    "command": "-cursorEndSelect",
+    "when": "textInputFocus"
+  }
+]
