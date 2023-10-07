@@ -1,21 +1,25 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import * as React from 'react'
 import p5 from 'p5'
 
-export default function Background() {
-  const backgroundRef = useRef(null);
+export default function Background({
+  backgroundColor = '#F3EDDC',
+  fillColor = '#BBD6AA90'
+}) {
 
-  function init() {
-    new p5((p5: any) => {
-
+  const backgroundRef = React.useRef(null)
+  let p5Instance: any = null
+  
+  React.useEffect(() => {
+    p5Instance = new p5((p5: any) => {
       // 鼠标初始位置
       let prevMousePositions = { x: 0, y: 0 }
       // 设置最小距离阈值
-      const minDistanceThreshold = 20; 
+      const minDistanceThreshold = 20;
 
       p5.setup = () => {
         p5.createCanvas(p5.windowWidth, p5.windowHeight);
-        p5.background('#F3EDDC');
+        p5.background(backgroundColor);
         p5.frameRate(144); // 增加帧率
       }
 
@@ -23,7 +27,7 @@ export default function Background() {
         // 1. 如果是第一次进来，那么就是直接渲染
         // 2. 如果是第二次之后，那么就可以判断是否需要差值
         p5.noStroke()
-        p5.fill('#BBD6AA90')
+        p5.fill(fillColor)
 
         const currentPosition = { x: p5.mouseX, y: p5.mouseY };
 
@@ -69,10 +73,11 @@ export default function Background() {
         p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
       }
     }, backgroundRef.current);
-  }
 
-  useEffect(() => {
-    init();
+    // 返回清理函数，在组件卸载或下一次调用 useEffect 之前执行
+    return () => {
+      p5Instance.remove();
+    };
   }, []); // 传递空的依赖数组以确保只在组件挂载时运行一次
 
   return (
