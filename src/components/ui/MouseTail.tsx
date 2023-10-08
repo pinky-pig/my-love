@@ -2,7 +2,7 @@ import { useMouse } from 'ahooks';
 import React from 'react';
 import { getStroke } from 'perfect-freehand'
 
-const config_linear = { size: 50, start: { taper: true } }
+const config_linear = { size: 150, start: { taper: true } }
 let timestamp = 0
 
 export default function MouseTail() {
@@ -55,9 +55,9 @@ export default function MouseTail() {
       >
         <path
           d={pathData}
-          stroke="currentColor"
-          fill="currentColor"
-          opacity={0.1}
+          stroke="#FFFFFF"
+          fill="#FFFFFF"
+          opacity={0.3}
         />
       </svg>
       <div
