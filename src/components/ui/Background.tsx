@@ -9,7 +9,11 @@ export default function Background({
 
   const backgroundRef = React.useRef(null)
   let p5Instance: any = null
-  
+
+  setTimeout(() => {
+    fillColor = '#EADF5B'
+  }, 3000);
+
   React.useEffect(() => {
     p5Instance = new p5((p5: any) => {
       // 鼠标初始位置
