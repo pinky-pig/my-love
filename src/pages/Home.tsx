@@ -11,7 +11,7 @@ export default function Home() {
 
 
   return (
-    <main className="flex min-h-screen  p-24">
+    <main className="fixed top-0 left-0 bottom-0 right-0 w-full h-full p-24">
 
       {/* content */}
       <div className=" flex flex-col font-semibold text-[#3E4857] text-6 select-none gap-12 ">
