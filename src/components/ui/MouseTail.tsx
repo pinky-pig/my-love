@@ -10,6 +10,8 @@ export default function MouseTail() {
   const { clientX, clientY } = useMouse()
   const [pathData, setPathData] = React.useState('')
   const pointsRef = React.useRef<number[][]>([])
+  
+  const [flag, setFlag] = React.useState(0);
 
   // 1. 监听鼠标位置，设置点集
   React.useEffect(() => {
@@ -25,18 +27,20 @@ export default function MouseTail() {
     const config_option = config_linear
     const stroke = getStroke(pointsRef.current, config_option)
     setPathData(getSvgPathFromStroke(stroke))
-  }, [pointsRef.current])
+  }, [flag])
 
   // 3. 创建循环，拖尾效果
   React.useEffect(() => {
     loop()
   }, [])
+
   function loop() {
     const now = Date.now()
     const elapsed2 = now - timestamp
     if (elapsed2 > 32) {
       if (pointsRef.current.length > 1) {
         pointsRef.current.splice(0, Math.ceil(pointsRef.current.length * 0.1))
+        setFlag(old => old + 1)
         timestamp = now
       }
     }
@@ -52,6 +56,7 @@ export default function MouseTail() {
         d={pathData}
         stroke="currentColor"
         fill="currentColor"
+        opacity={0.1}
       />
     </svg>
   )
