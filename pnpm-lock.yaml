@@ -4,6 +4,7 @@ importers:
 
   .:
     specifiers:
+      '@iconify-json/fluent-emoji': ^1.1.14
       '@iconify-json/lucide': ^1.1.129
       '@types/node': 20.7.0
       '@types/react': 18.2.22
@@ -24,6 +25,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
+      '@iconify-json/fluent-emoji': 1.1.14
       '@iconify-json/lucide': 1.1.132
       '@types/node': 20.7.0
       '@types/react': 18.2.22
@@ -123,6 +125,12 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-json/fluent-emoji/1.1.14:
+    resolution: {integrity: sha512-O2xpoThuWEWO6ZD9VJCGMQ9dkFHUC6lPv7rtZwR1fXfTOGwk/cOIuRziEjKrvQ8hfTVaiKfDNzQtCMuExfGfdw==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify-json/lucide/1.1.132:

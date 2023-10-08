@@ -7,19 +7,23 @@ export default function Background({
   fillColor = '#BBD6AA90'
 }) {
 
+  // 设置最小距离阈值
+  const minDistanceThreshold = 20;
+  const radius = 160
+
   const backgroundRef = React.useRef(null)
   let p5Instance: any = null
 
-  setTimeout(() => {
-    fillColor = '#EADF5B'
-  }, 3000);
+  const fillColorRef = React.useRef(fillColor)
+  React.useEffect(() => {
+    fillColorRef.current = fillColor
+  }, [fillColor])
 
   React.useEffect(() => {
     p5Instance = new p5((p5: any) => {
+
       // 鼠标初始位置
       let prevMousePositions = { x: 0, y: 0 }
-      // 设置最小距离阈值
-      const minDistanceThreshold = 20;
 
       p5.setup = () => {
         p5.createCanvas(p5.windowWidth, p5.windowHeight);
@@ -31,7 +35,7 @@ export default function Background({
         // 1. 如果是第一次进来，那么就是直接渲染
         // 2. 如果是第二次之后，那么就可以判断是否需要差值
         p5.noStroke()
-        p5.fill(fillColor)
+        p5.fill(fillColorRef.current)
 
         const currentPosition = { x: p5.mouseX, y: p5.mouseY };
 
@@ -50,7 +54,7 @@ export default function Background({
           && currentPosition.x !== 0
           && currentPosition.y !== 0
         ) {
-          p5.ellipse(p5.mouseX, p5.mouseY, 80, 80);
+          p5.ellipse(p5.mouseX, p5.mouseY, radius, radius);
         }
         else {
           const p1 = prevMousePositions;
@@ -64,10 +68,10 @@ export default function Background({
             for (let j = 0; j < steps; j++) {
               const x = p5.lerp(p1.x, p2.x, j / steps);
               const y = p5.lerp(p1.y, p2.y, j / steps);
-              p5.ellipse(x, y, 80, 80);
+              p5.ellipse(x, y, radius, radius);
             }
           } else {
-            p5.ellipse(p5.mouseX, p5.mouseY, 80, 80);
+            p5.ellipse(p5.mouseX, p5.mouseY, radius, radius);
           }
         }
         prevMousePositions = currentPosition

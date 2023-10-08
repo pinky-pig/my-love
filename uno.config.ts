@@ -6,6 +6,9 @@ import {
 } from 'unocss'
 
 export default defineConfig({
+  shortcuts: [
+    // ['btn', ''],
+  ],
   presets: [
     presetUno({
       dark: 'media',
