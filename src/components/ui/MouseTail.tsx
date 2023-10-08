@@ -2,7 +2,7 @@ import { useMouse } from 'ahooks';
 import React from 'react';
 import { getStroke } from 'perfect-freehand'
 
-const config_linear = { size: 18, start: { taper: true } }
+const config_linear = { size: 50, start: { taper: true } }
 let timestamp = 0
 
 export default function MouseTail() {
@@ -10,7 +10,7 @@ export default function MouseTail() {
   const { clientX, clientY } = useMouse()
   const [pathData, setPathData] = React.useState('')
   const pointsRef = React.useRef<number[][]>([])
-  
+
   const [flag, setFlag] = React.useState(0);
 
   // 1. 监听鼠标位置，设置点集
@@ -48,17 +48,26 @@ export default function MouseTail() {
   }
 
   return (
-    <svg
-      id='mouseTail'
-      className="pointer-events-none fixed left-0 top-0 z-999 h-full w-full touch-none"
-    >
-      <path
-        d={pathData}
-        stroke="currentColor"
-        fill="currentColor"
-        opacity={0.1}
+    <>
+      <svg
+        id='mouseTail'
+        className="pointer-events-none fixed left-0 top-0 z-999 h-full w-full touch-none"
+      >
+        <path
+          d={pathData}
+          stroke="currentColor"
+          fill="currentColor"
+          opacity={0.1}
+        />
+      </svg>
+      <div
+        style={{
+          left: clientX + 'px',
+          top: clientY + 'px',
+        }}
+        className="pointer-events-none -translate-1/2 w-15vw h-15vw rounded-full bg-transparent absolute top-0 left-0 border-1 border-white border-solid"
       />
-    </svg>
+    </>
   )
 }
 
