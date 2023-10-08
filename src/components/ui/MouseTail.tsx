@@ -3,15 +3,12 @@ import React from 'react';
 import { getStroke } from 'perfect-freehand'
 
 const config_linear = { size: 150, start: { taper: true } }
-let timestamp = 0
 
 export default function MouseTail() {
 
   const { clientX, clientY } = useMouse()
   const [pathData, setPathData] = React.useState('')
   const pointsRef = React.useRef<number[][]>([])
-
-  const [flag, setFlag] = React.useState(0);
 
   // 1. 监听鼠标位置，设置点集
   React.useEffect(() => {
@@ -22,25 +19,21 @@ export default function MouseTail() {
     }
   }, [clientX, clientY])
 
-  // 2. 监听点集，设置路径
-  React.useEffect(() => {
-    const config_option = config_linear
-    const stroke = getStroke(pointsRef.current, config_option)
-    setPathData(getSvgPathFromStroke(stroke))
-  }, [flag])
-
-  // 3. 创建循环，拖尾效果
+  // 2. 创建循环，拖尾效果
   React.useEffect(() => {
     loop()
   }, [])
 
+  let timestamp = 0
   function loop() {
     const now = Date.now()
     const elapsed2 = now - timestamp
     if (elapsed2 > 32) {
       if (pointsRef.current.length > 1) {
         pointsRef.current.splice(0, Math.ceil(pointsRef.current.length * 0.1))
-        setFlag(old => old + 1)
+        // 3. 监听点集，设置路径
+        const stroke = getStroke(pointsRef.current, config_linear)
+        setPathData(getSvgPathFromStroke(stroke))
         timestamp = now
       }
     }
@@ -65,7 +58,7 @@ export default function MouseTail() {
           left: clientX + 'px',
           top: clientY + 'px',
         }}
-        className="pointer-events-none -translate-1/2 w-15vw h-15vw rounded-full bg-transparent absolute top-0 left-0 border-1 border-white border-solid"
+        className="pointer-events-none -translate-1/2 w-160px h-160px rounded-full bg-transparent absolute top-0 left-0 border-1 border-white border-solid"
       />
     </>
   )
