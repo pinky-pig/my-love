@@ -1,49 +1,50 @@
 import { useMouse } from 'ahooks'
 import React from 'react'
 
-export default function MouseTail() {
+export default function MouseTailCircle() {
   const { clientX, clientY } = useMouse()
   const [points, setPoints] = React.useState<number[][]>([])
 
   // 1. 监听鼠标位置，设置点集
   React.useEffect(() => {
     // eslint-disable-next-line no-empty
-    if (Number.isNaN(clientX) || Number.isNaN(clientY)) {
-
-    }
+    if (Number.isNaN(clientX) || Number.isNaN(clientY)) { }
     else {
       setPoints([...points, [clientX, clientY]])
     }
   }, [clientX, clientY])
 
-  // 2. 定义 loop 函数，鼠标停止移动，点集也要删除
-  const loopRef = React.useRef<() => void>()
-  const timestamp = React.useRef<number>(0)
-  loopRef.current = () => {
+  // 2. 创建循环，拖尾效果
+  React.useEffect(() => {
+    loop()
+  }, [])
+
+  let timestamp = 0
+  function loop() {
     const now = Date.now()
-    const elapsed2 = now - timestamp.current
+    const elapsed2 = now - timestamp
     if (elapsed2 > 32) {
-      if (points.length > 1) {
-        setPoints((points) => {
+      setPoints((points) => {
+        if (points.length > 1) {
           const temp = [...points]
           temp.splice(0, Math.ceil(points.length * 0.1))
+          timestamp = now
           return temp
-        })
-      }
-      timestamp.current = now
+        }
+        else {
+          return points
+        }
+      })
     }
-    requestAnimationFrame(loopRef.current!)
+    requestAnimationFrame(loop)
   }
-  React.useEffect(() => {
-    loopRef.current!()
-  }, [])
 
   return (
     <div className="fixed top-0 left-0 bottom-0 right-0 w-full h-full pointer-events-none">
       {
         points.map((point, index) => (
           <div
-            key={index}
+            key={`${point[0]}_circle_${point[1]}`}
             style={{
               transform: ` translate( calc(-50% + ${point[0]}px), calc(-50% + ${point[1]}px) ) `,
               willChange: 'transform',
