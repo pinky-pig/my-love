@@ -28,8 +28,10 @@ export default function MouseTailCircle() {
 
     function createLine(leader: { (prop: any): number; (arg0: string): any }, i: number) {
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+      line.style.stroke = 'rgba(255,255,255,0.04)'
+      line.style.strokeWidth = '160'
+      line.style.strokeLinecap = 'round'
       containerRef.current!.appendChild(line)
-
       gsap.set(line, { x: -1500, y: -750 })
 
       const pos = gsap.getProperty(line) as (property: string, unit?: string | undefined) => number

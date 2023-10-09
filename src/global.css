@@ -12,9 +12,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-line {
-  stroke: #c2f0fe;
-  stroke-width: 20;
-  stroke-linecap: round;
-}
