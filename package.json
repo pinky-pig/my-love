@@ -5,6 +5,7 @@
     "dev": "vite",
     "dev-refresh": "cross-env USE_REFRESH=true vite",
     "build": "vite build",
+    "lint": "eslint .",
     "build-refresh": "cross-env USE_REFRESH=true vite build",
     "preview": "vite preview"
   },
@@ -26,8 +27,8 @@
     "@unocss/preset-icons": "latest",
     "@vitejs/plugin-react": "^4.1.0",
     "cross-env": "^7.0.3",
-    "typescript": "^5.2.2",
     "eslint": "^8.45.0",
+    "typescript": "^5.2.2",
     "unocss": "latest",
     "vite": "^4.4.9"
   },

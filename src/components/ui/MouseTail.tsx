@@ -1,20 +1,21 @@
-import { useMouse } from 'ahooks';
-import React from 'react';
+import { useMouse } from 'ahooks'
+import React from 'react'
 import { getStroke } from 'perfect-freehand'
 
 const config_linear = { size: 150, start: { taper: true } }
 
 export default function MouseTail() {
-
   const { clientX, clientY } = useMouse()
   const [pathData, setPathData] = React.useState('')
   const pointsRef = React.useRef<number[][]>([])
 
   // 1. 监听鼠标位置，设置点集
   React.useEffect(() => {
+    // eslint-disable-next-line no-empty
     if (Number.isNaN(clientX) || Number.isNaN(clientY)) {
-      return
-    } else {
+
+    }
+    else {
       pointsRef.current = [...pointsRef.current, [clientX, clientY, 0.5]]
     }
   }, [clientX, clientY])
@@ -55,8 +56,8 @@ export default function MouseTail() {
       </svg>
       <div
         style={{
-          left: clientX + 'px',
-          top: clientY + 'px',
+          left: `${clientX}px`,
+          top: `${clientY}px`,
         }}
         className="pointer-events-none -translate-1/2 w-160px h-160px rounded-full bg-transparent absolute top-0 left-0 border-1 border-white border-solid"
       />
