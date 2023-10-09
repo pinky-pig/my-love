@@ -1,6 +1,7 @@
 'use client'
 import Background from '~/components/ui/Background'
 import MouseTail from '~/components/ui/MouseTail'
+import MouseTailCircle from '~/components/ui/MouseTailCircle'
 import FluentEmojiSmilingFaceWithSmilingEyes from '~/components/emoji/FluentEmojiSmilingFaceWithSmilingEyes'
 import * as React from 'react'
 import { ThemePalettes } from '~/config/params'
@@ -70,7 +71,8 @@ export default function Home() {
       </div>
 
       <Background fillColor={fillColor}></Background>
-      <MouseTail></MouseTail>
+      {/* <MouseTail></MouseTail> */}
+      <MouseTailCircle></MouseTailCircle>
     </main>
   )
 }
