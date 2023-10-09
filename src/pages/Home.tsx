@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Background from '~/components/ui/Background'
-import MouseTailCircle from '~/components/ui/MouseTailCircle'
-import FluentEmojiSmilingFaceWithSmilingEyes from '~/components/emoji/FluentEmojiSmilingFaceWithSmilingEyes'
+import MouseTailGSAP from '~/components/ui/MouseTailGSAP'
 import { ThemePalettes } from '~/config/params'
 
 export default function Home() {
@@ -59,7 +58,7 @@ export default function Home() {
 
           <span className="inline">
             。
-            <FluentEmojiSmilingFaceWithSmilingEyes className="inline text-12"></FluentEmojiSmilingFaceWithSmilingEyes>
+            {/* <FluentEmojiSmilingFaceWithSmilingEyes className="inline text-12"></FluentEmojiSmilingFaceWithSmilingEyes> */}
           </span>
         </div>
 
@@ -67,7 +66,8 @@ export default function Home() {
 
       <Background fillColor={fillColor}></Background>
       {/* <MouseTail></MouseTail> */}
-      <MouseTailCircle></MouseTailCircle>
+      {/* <MouseTailDOM></MouseTailDOM> */}
+      <MouseTailGSAP></MouseTailGSAP>
     </main>
   )
 }

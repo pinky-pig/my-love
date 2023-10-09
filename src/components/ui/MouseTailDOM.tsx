@@ -1,7 +1,7 @@
 import { useMouse } from 'ahooks'
 import React from 'react'
 
-export default function MouseTailCircle() {
+export default function MouseTailDOM() {
   const { clientX, clientY } = useMouse()
   const [points, setPoints] = React.useState<number[][]>([])
 
