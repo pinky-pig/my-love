@@ -7,7 +7,7 @@ export default function Background({
 }) {
   // 设置最小距离阈值
   const minDistanceThreshold = 20
-  const radius = 160
+  const radius = 200
 
   const backgroundRef = React.useRef(null)
   let p5Instance: any = null

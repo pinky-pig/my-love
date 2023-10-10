@@ -7,7 +7,7 @@ export default React.memo(() => {
   const svgRef = React.useRef<any>(null)
 
   // cursor 尺寸
-  const size = '160'
+  const size = '200'
 
   /**
    * 通过 GSAP 创建鼠标拖尾效果

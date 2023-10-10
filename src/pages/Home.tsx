@@ -38,10 +38,12 @@ export default function Home() {
           </span>
 
           <span
-            className="inline text-8 text-transparent"
+            className="inline-block text-8 text-transparent hover:!scale-110"
             style={{
               WebkitTextStroke: '2px #3E4857',
+              transition: 'transform 0.3s linear',
             }}
+
             onPointerOver={() => setFillColor(ThemePalettes.yellow)}
           >
             交朋友
@@ -50,10 +52,11 @@ export default function Home() {
             ，要
           </span>
           <span
-            className="inline text-8 text-[#F3EDDC]"
+            className="inline-block text-16 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
             style={{
               WebkitTextStroke: '2px #3E4857',
               textShadow: '4px 4px 0 #3e4857',
+              transition: 'text-shadow 0.3s ease-in-out, transform 0.3s linear',
             }}
             onPointerOver={() => setFillColor(ThemePalettes.wheat)}
           >
