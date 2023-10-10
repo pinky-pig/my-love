@@ -1,23 +1,34 @@
 import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import Map from '~/pages/map'
+import Home from '~/pages/Home'
+import Default from '~/layouts/Default'
 
-const Home = lazy(() => import('~/pages/Home'))
+const Map = lazy(() => import('~/pages/map'))
+
 const routes = [
   {
     path: '/',
-    element: <Home />,
+    element: <Default />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: 'Home',
+        element: <Home />,
+      },
+      {
+        path: '/map',
+        element: <Map />,
+      },
+    ],
   },
-  {
-    path: '/map',
-    element: <Map />,
-  },
+
   {
     path: '*',
     element: <div> 404 </div>,
   },
 ]
-
-export { routes }
 
 export default createBrowserRouter(routes)

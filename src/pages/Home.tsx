@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Background from '~/components/ui/Background'
-import MouseTailGSAP from '~/components/ui/MouseTailGSAP'
 import { ThemePalettes } from '~/config/params'
 
 export default function Home() {
@@ -72,7 +71,6 @@ export default function Home() {
       </div>
 
       <Background fillColor={fillColor}></Background>
-      <MouseTailGSAP></MouseTailGSAP>
     </main>
   )
 }
