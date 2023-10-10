@@ -2,7 +2,7 @@ import { useMouse } from 'ahooks'
 import React from 'react'
 import gsap from 'gsap'
 
-export default function MouseTailCircle() {
+export default React.memo(() => {
   const { clientX, clientY } = useMouse()
   const svgRef = React.useRef<any>(null)
 
@@ -174,4 +174,4 @@ export default function MouseTailCircle() {
       }
     </div>
   )
-}
+})
