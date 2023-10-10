@@ -7,7 +7,7 @@ export default function Home() {
   const [fillColor, setFillColor] = React.useState(ThemePalettes.wheat)
 
   return (
-    <main className="fixed top-0 left-0 bottom-0 right-0 w-full h-full p-24">
+    <main className="fixed top-0 left-0 bottom-0 right-0 w-full h-full p-24 box-border">
 
       {/* content */}
       <div className=" flex flex-col font-semibold text-[#3E4857] text-6 select-none gap-12 ">
