@@ -6,6 +6,9 @@ export default function MouseTailCircle() {
   const { clientX, clientY } = useMouse()
   const svgRef = React.useRef<any>(null)
 
+  // cursor 尺寸
+  const size = '160'
+
   /**
    * 通过 GSAP 创建鼠标拖尾效果
    * 循环创建 50 个 <line /> ，用于流畅动画
@@ -16,17 +19,21 @@ export default function MouseTailCircle() {
    * 这里设置 -1500 -1500 为原点，不显示鼠标轨迹
    */
   React.useEffect(() => {
+    // 消失隐藏的原点
+    const origin = { x: -1500, y: -1500 }
+
+    // 轨迹的颜色，轨迹的尺寸是上面定义的 size
+    const stroke = 'rgba(255,255,255,0.01)'
+
     // 运动系数，用于补间流畅
     const ease = 0.75
 
     // 初始点位坐标
-    const pointer = {
-      x: -1500,
-      y: -1500,
-    }
+    const pointer = { x: origin.x, y: origin.y }
 
     // 鼠标监听位置
     let mouseTimer: number | null = null
+
     const handleMouseMove = (event: MouseEvent) => {
       // 如果鼠标有移动，那么设置拖尾颜色显示
       setLineWhite()
@@ -55,7 +62,7 @@ export default function MouseTailCircle() {
     function setLineWhite() {
       const doms = window.document.querySelectorAll('.tail-line') as NodeListOf<HTMLElement>
       doms.forEach((line) => {
-        line.style.stroke = 'rgba(255,255,255,0.01)' // 鼠标停止移动时设置为透明
+        line.style.stroke = stroke // 鼠标停止移动时设置为透明
       })
     }
 
@@ -77,7 +84,7 @@ export default function MouseTailCircle() {
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line')
 
       // 设置样式
-      line.style.strokeWidth = '160'
+      line.style.strokeWidth = size
       line.style.strokeLinecap = 'round'
       line.style.transition = 'stroke 0.2s ease-in-out'
       line.style.stroke = 'transparent'
@@ -86,7 +93,7 @@ export default function MouseTailCircle() {
       svgRef.current!.appendChild(line)
 
       // 初始化设置其位置
-      gsap.set(line, { x: -1500, y: -1500 })
+      gsap.set(line, { x: origin.x, y: origin.y })
 
       // 因为上面设置了 property {x: number, y: number} ，所以这里得到的也是 x,y
       const pos = gsap.getProperty(line) as (property: string) => number
@@ -103,7 +110,7 @@ export default function MouseTailCircle() {
           // 这里增加一个判断，就是当前一个坐标是在设置的原点的时候，不走动画。从最新点开始动画
           // 这里经过 debugger 得知，先走 y ， 再走 x
           x: () => {
-            if (pos('x') === -1500 && leader('x') !== -1500) {
+            if (pos('x') === origin.x && leader('x') !== origin.x) {
               line.setAttribute('x2', `${leader('x')}`)
               return leader('x')
             }
@@ -125,7 +132,7 @@ export default function MouseTailCircle() {
             }
           },
           y: () => {
-            if (pos('x') === -1500 && pos('y') === -1500 && leader('y') !== -1500) {
+            if (pos('x') === origin.x && pos('y') === origin.y && leader('y') !== origin.y) {
               line.setAttribute('y2', `${leader('y')}`)
               return leader('y')
             }
@@ -158,8 +165,10 @@ export default function MouseTailCircle() {
             style={{
               transform: `translate(calc(-50% + ${clientX}px), calc(-50% + ${clientY}px))`,
               willChange: 'transform',
+              width: `${size}px`,
+              height: `${size}px`,
             }}
-            className="pointer-events-none w-160px h-160px rounded-full bg-transparent absolute top-0 left-0 border-2 border-white border-solid"
+            className="pointer-events-none rounded-full bg-transparent absolute top-0 left-0 border-2 border-white border-solid"
           />
         )
       }
