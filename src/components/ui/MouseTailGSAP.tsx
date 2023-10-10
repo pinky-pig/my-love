@@ -47,7 +47,7 @@ export default React.memo(() => {
       // 设置计时器，如果鼠标停止移动超过500毫秒，将拖尾颜色隐藏
       mouseTimer = setTimeout(() => {
         setLineTransparent()
-      }, 200) as unknown as number
+      }, 100) as unknown as number
     }
 
     window.addEventListener('mousemove', handleMouseMove)
@@ -86,7 +86,7 @@ export default React.memo(() => {
       // 设置样式
       line.style.strokeWidth = size
       line.style.strokeLinecap = 'round'
-      line.style.transition = 'stroke 0.2s ease-in-out'
+      line.style.transition = 'stroke 0.1s ease-in-out'
       line.style.stroke = 'transparent'
       line.setAttribute('class', 'tail-line')
       // 添加到 DOM 视图

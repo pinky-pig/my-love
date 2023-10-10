@@ -16,16 +16,19 @@ export default function Home() {
           <span className="inline">
             不要忽视
           </span>
-          <span
-            className="inline text-16 text-[#F3EDDC]"
+
+          <div
+            className="inline-block text-16 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
             style={{
               WebkitTextStroke: '2px #3E4857',
               textShadow: '4px 4px 0 #3e4857',
+              transition: 'text-shadow 0.3s ease-in-out, transform 0.3s linear',
             }}
             onPointerOver={() => setFillColor(ThemePalettes.green)}
           >
             梦想
-          </span>
+          </div>
+
           <span className="inline">
             ，
           </span>
@@ -33,6 +36,7 @@ export default function Home() {
           <span className="inline">
             不要工作太久，说出想法，
           </span>
+
           <span
             className="inline text-8 text-transparent"
             style={{
@@ -58,15 +62,13 @@ export default function Home() {
 
           <span className="inline">
             。
-            {/* <FluentEmojiSmilingFaceWithSmilingEyes className="inline text-12"></FluentEmojiSmilingFaceWithSmilingEyes> */}
+            {/* <FluentEmojiSmilingFaceWithSmilingEyes className="inline text-8"></FluentEmojiSmilingFaceWithSmilingEyes> */}
           </span>
         </div>
 
       </div>
 
       <Background fillColor={fillColor}></Background>
-      {/* <MouseTail></MouseTail> */}
-      {/* <MouseTailDOM></MouseTailDOM> */}
       <MouseTailGSAP></MouseTailGSAP>
     </main>
   )
