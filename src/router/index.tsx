@@ -1,14 +1,18 @@
 import { lazy } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
+import { useRoutes } from 'react-router-dom'
+import Guard from './Guard'
 import Home from '~/pages/Home'
+import Map from '~/pages/map'
 import Default from '~/layouts/Default'
 
-const Map = lazy(() => import('~/pages/map'))
+const Video = lazy(() => import('~/pages/video'))
+const Timeline = lazy(() => import('~/pages/timeline'))
 
+// 路由配置列表数据转换
 const routes = [
   {
     path: '/',
-    element: <Default />,
+    element: <Guard> <Default /> </Guard>,
     children: [
       {
         path: '/',
@@ -20,15 +24,26 @@ const routes = [
       },
       {
         path: '/map',
-        element: <Map />,
+        element: (
+          <Map />
+        ),
+      },
+      {
+        path: '/video',
+        element: <Video />,
+      },
+      {
+        path: '/timeline',
+        element: <Timeline />,
       },
     ],
   },
-
   {
     path: '*',
     element: <div> 404 </div>,
   },
 ]
 
-export default createBrowserRouter(routes)
+export default function DynamicRouters() {
+  return useRoutes(routes)
+}

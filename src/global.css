@@ -12,3 +12,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* 
+  利用 transition view api ，设置类名为 transition-text 的要素的动画
+  https://developer.chrome.com/docs/web-platform/view-transitions/
+*/
+.transition-text {
+  view-transition-name: transition-text;
+}
+
