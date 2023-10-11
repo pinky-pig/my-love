@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import Background from '~/components/ui/Background'
 import { ThemePalettes } from '~/config/params'
 import { viewNavigate } from '~/hooks/useViewNavigate'
-import TextRouterWithTransition from '~/components/ui/TextRouterWithTransition'
 
 export default function Home() {
   const [fillColor, setFillColor] = React.useState(ThemePalettes.wheat)
@@ -22,7 +21,7 @@ export default function Home() {
           </span>
 
           <div
-            className="inline-block cursor-pointer text-16 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
+            className="transition-text inline-block cursor-pointer text-16 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
             style={{
               WebkitTextStroke: '2px #3E4857',
               textShadow: '4px 4px 0 #3e4857',
@@ -35,7 +34,7 @@ export default function Home() {
               viewNavigate(navigate, '/map')
             }}
           >
-            梦想
+             梦想
           </div>
 
           <span className="inline">
@@ -56,9 +55,7 @@ export default function Home() {
               setFillColor(ThemePalettes.yellow)
             }}
           >
-            <TextRouterWithTransition to="/map">
-              <span className='transition-text'>交朋友</span>
-            </TextRouterWithTransition>
+            <span >交朋友</span>
           </span>
           <span className="inline">
             ，要
