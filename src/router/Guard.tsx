@@ -1,6 +1,9 @@
 import React from 'react'
 
-export default function Guard({ children }: any) {
+interface GuardProps {
+  children: React.ReactNode
+}
+export default function Guard({ children }: GuardProps): React.ReactNode {
   return (
     <React.Suspense fallback={<div>Loading</div>}>
       {children}
