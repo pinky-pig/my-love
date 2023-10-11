@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { GeoUiEarthEast } from '~/components/emoji/GeoUiEarthEast'
+import { EarthEmoji } from '~/components/emoji/EarthEmoji'
 import { viewNavigate } from '~/hooks/useViewNavigate'
 
 export default function Map() {
@@ -16,7 +16,7 @@ export default function Map() {
 
       <div className="w-full h-full box-border p-36 pointer-events-none ">
         <div className="flex flex-col w-14 items-start gap-4">
-          <GeoUiEarthEast
+          <EarthEmoji
             className="transition-text text-14 pointer-events-auto cursor-pointer "
             onClick={() => {
               viewNavigate(navigate, '/')

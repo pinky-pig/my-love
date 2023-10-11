@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import Background from '~/components/ui/Background'
 import { ThemePalettes } from '~/config/params'
 import { viewNavigate } from '~/hooks/useViewNavigate'
-import { GeoUiEarthEast } from '~/components/emoji/GeoUiEarthEast'
+import { EarthEmoji } from '~/components/emoji/EarthEmoji'
+import { VideoEmoji } from '~/components/emoji/VideoEmoji'
 
 export default function Home() {
   const [fillColor, setFillColor] = React.useState(ThemePalettes.wheat)
@@ -79,12 +80,20 @@ export default function Home() {
 
       {/* second */}
       <div>
-        <GeoUiEarthEast
+        <EarthEmoji
           className="transition-text text-32 cursor-pointer"
           onClick={() => {
             viewNavigate(navigate, '/map')
           }}
         />
+
+        <VideoEmoji
+          className="text-32 cursor-pointer"
+          onClick={() => {
+            viewNavigate(navigate, '/video')
+          }}
+        />
+
       </div>
 
       <Background fillColor={fillColor}></Background>
