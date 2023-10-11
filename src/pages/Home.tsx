@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Background from '~/components/ui/Background'
 import { ThemePalettes } from '~/config/params'
 import { viewNavigate } from '~/hooks/useViewNavigate'
+import { GeoUiEarthEast } from '~/components/emoji/GeoUiEarthEast'
 
 export default function Home() {
   const [fillColor, setFillColor] = React.useState(ThemePalettes.wheat)
@@ -21,7 +22,7 @@ export default function Home() {
           </span>
 
           <div
-            className="transition-text inline-block cursor-pointer text-16 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
+            className=" inline-block cursor-pointer text-16 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
             style={{
               WebkitTextStroke: '2px #3E4857',
               textShadow: '4px 4px 0 #3e4857',
@@ -30,11 +31,8 @@ export default function Home() {
             onPointerOver={() => {
               setFillColor(ThemePalettes.green)
             }}
-            onClick={() => {
-              viewNavigate(navigate, '/map')
-            }}
           >
-             梦想
+            梦想
           </div>
 
           <span className="inline">
@@ -74,10 +72,19 @@ export default function Home() {
 
           <span className="inline">
             。
-            {/* <FluentEmojiSmilingFaceWithSmilingEyes className="inline text-8"></FluentEmojiSmilingFaceWithSmilingEyes> */}
           </span>
         </div>
 
+      </div>
+
+      {/* second */}
+      <div>
+        <GeoUiEarthEast
+          className="transition-text text-32 cursor-pointer"
+          onClick={() => {
+            viewNavigate(navigate, '/map')
+          }}
+        />
       </div>
 
       <Background fillColor={fillColor}></Background>
