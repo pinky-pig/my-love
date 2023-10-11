@@ -2,7 +2,8 @@ import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Background from '~/components/ui/Background'
 import { ThemePalettes } from '~/config/params'
-import TextRouterWithTransition from '~/router/TextRouterWithTransition'
+import { viewNavigate } from '~/hooks/useViewNavigate'
+import TextRouterWithTransition from '~/components/ui/TextRouterWithTransition'
 
 export default function Home() {
   const [fillColor, setFillColor] = React.useState(ThemePalettes.wheat)
@@ -31,7 +32,7 @@ export default function Home() {
               setFillColor(ThemePalettes.green)
             }}
             onClick={() => {
-              navigate('/map', { replace: false })
+              viewNavigate(navigate, '/map')
             }}
           >
             梦想
