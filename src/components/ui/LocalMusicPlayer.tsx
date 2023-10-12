@@ -1,9 +1,8 @@
-import { useEventListener, useMouse } from 'ahooks'
+import { useEventListener } from 'ahooks'
 import React from 'react'
 
 export default function LocalMusicPlayer() {
-  const mouse = useMouse()
-
+  // const mouse = useMouse()
   // React.useEffect(() => {
   //   console.log(mouse)
   // }, [mouse])
