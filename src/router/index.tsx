@@ -12,7 +12,7 @@ const Timeline = lazy(() => import('~/pages/timeline'))
 const routes = [
   {
     path: '/',
-    element: <Guard> <Default /> </Guard>,
+    element: <Default />,
     children: [
       {
         path: '/',
@@ -25,7 +25,9 @@ const routes = [
       {
         path: '/map',
         element: (
-          <Map />
+          <Guard path={'/map'}>
+            <Map />
+          </Guard>
         ),
       },
       {

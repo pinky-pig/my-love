@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Background from '~/components/ui/Background'
-import { ThemePalettes } from '~/config/params'
+import { ThemePalettes, pageColor } from '~/config/params'
 import { viewNavigate } from '~/hooks/useViewNavigate'
 import { EarthEmoji } from '~/components/emoji/EarthEmoji'
 import { VideoEmoji } from '~/components/emoji/VideoEmoji'
@@ -12,7 +12,10 @@ export default function Home() {
   const navigate = useNavigate()
 
   return (
-    <main className="fixed top-0 left-0 bottom-0 right-0 w-full h-full p-24 box-border">
+    <main
+      className="fixed top-0 left-0 bottom-0 right-0 w-full h-full p-24 box-border"
+      style={{ background: pageColor.home }}
+    >
 
       {/* content */}
       <div className=" flex flex-col font-semibold text-[#3E4857] text-6 select-none gap-12 ">
