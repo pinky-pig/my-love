@@ -5,7 +5,6 @@ importers:
   .:
     specifiers:
       '@antfu/eslint-config': ^0.39.8
-      '@iconify-json/logos': ^1.1.37
       '@types/node': ^20.8.3
       '@types/react': ^18.2.22
       '@types/react-dom': ^18.2.7
@@ -35,7 +34,6 @@ importers:
       react-router-dom: 6.16.0_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@antfu/eslint-config': 0.39.8_srhnpoqmhm6ulnern6fnsuapfi
-      '@iconify-json/logos': 1.1.37
       '@types/node': 20.8.3
       '@types/react': 18.2.25
       '@types/react-dom': 18.2.11
@@ -647,12 +645,6 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
-    dev: true
-
-  /@iconify-json/logos/1.1.37:
-    resolution: {integrity: sha512-H2S8frTEznk6paX2kMzeUGn4KSiykghvO0b8UvEDd1fFFzt0WxCXpP1tBv67XaWK99e6JgA34hhv4lRGAm1hJg==}
-    dependencies:
-      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types/2.0.0:
