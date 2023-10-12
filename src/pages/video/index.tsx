@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import VideoMask from '~/assets/video-mask.png'
+import VideoMask from '~/assets/img/video-mask.png'
 
 export default function Video() {
   const navigate = useNavigate()
