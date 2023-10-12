@@ -1,0 +1,80 @@
+/* --------------- border 样式 start --------------- */
+.scratchyBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.25s cubic-bezier(0.62, 0.02, 0.34, 1);
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.scratchyBorder > div {
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  position: absolute;
+}
+
+.scratchyBorder .frames div {
+  background: url("~/assets/svg/speciesBorder.svg") repeat-x 50% 50%;
+  width: 100%;
+  height: 18px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.scratchyBorder .frames div:nth-child(2), .scratchyBorder .frames div:nth-child(4) {
+  width: 20px;
+  height: 100%;
+  background: url("~/assets/svg/speciesBorderVert.svg") repeat-y 50% 50%;
+}
+
+.scratchyBorder .frames div:nth-child(3) {
+  bottom: 0;
+  top: auto;
+}
+
+.scratchyBorder .frames div:nth-child(3), .scratchyBorder .frames div:nth-child(4) {
+  transform: rotate(179.99deg);
+}
+
+.scratchyBorder .frames div:nth-child(4) {
+  right: 0;
+  left: auto;
+}
+
+.scratchyBorder .corners div::before, .scratchyBorder .corners div::after {
+  content: "";
+  background: url("~/assets/svg/speciesCorner.svg") no-repeat center center;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 10px;
+  top: 11px;
+}
+
+.scratchyBorder .corners div:nth-child(1)::after {
+  transform: rotate(90deg);
+  left: auto;
+  right: 10px;
+  top: 11px;
+}
+
+.scratchyBorder .corners div:nth-child(2)::before {
+  left: auto;
+  right: 10px;
+  top: auto;
+  bottom: 11px;
+  transform: rotate(180deg);
+}
+
+.scratchyBorder .corners div:nth-child(2)::after {
+  top: auto;
+  bottom: 11px;
+  transform: rotate(270deg);
+}
+/* --------------- border 样式 end --------------- */

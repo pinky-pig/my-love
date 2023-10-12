@@ -16,6 +16,6 @@ export const pageColor = {
 
   home: ThemePalettes.cream,
   video: ThemePalettes.black,
-  map: ThemePalettes.wheat,
-  timeline: ThemePalettes.green,
+  map: ThemePalettes.green,
+  timeline: ThemePalettes.purple,
 }

@@ -53,14 +53,14 @@ export default React.memo(() => {
     window.addEventListener('mousemove', handleMouseMove)
 
     function setLineTransparent() {
-      const doms = window.document.querySelectorAll('.tail-line') as NodeListOf<HTMLElement>
+      const doms = window.document.querySelectorAll('.gsap-tail-line') as NodeListOf<HTMLElement>
       doms.forEach((line) => {
         line.style.stroke = 'transparent' // 鼠标停止移动时设置为透明
       })
     }
 
     function setLineWhite() {
-      const doms = window.document.querySelectorAll('.tail-line') as NodeListOf<HTMLElement>
+      const doms = window.document.querySelectorAll('.gsap-tail-line') as NodeListOf<HTMLElement>
       doms.forEach((line) => {
         line.style.stroke = stroke // 鼠标停止移动时设置为透明
       })
@@ -88,7 +88,7 @@ export default React.memo(() => {
       line.style.strokeLinecap = 'round'
       line.style.transition = 'stroke 0.1s ease-in-out'
       line.style.stroke = 'transparent'
-      line.setAttribute('class', 'tail-line')
+      line.setAttribute('class', 'gsap-tail-line')
       // 添加到 DOM 视图
       svgRef.current!.appendChild(line)
 
@@ -152,7 +152,7 @@ export default React.memo(() => {
   }, [])
 
   return (
-    <div className="fixed top-0 left-0 bottom-0 right-0 w-full h-full pointer-events-none">
+    <div className="fixed top-0 left-0 bottom-0 right-0 w-full h-full pointer-events-none z-99">
       <svg
         ref={svgRef}
         className="absolute top-0 left-0 w-full h-full"
