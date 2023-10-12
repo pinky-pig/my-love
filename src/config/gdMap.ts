@@ -1,6 +1,6 @@
-const KEY = 'de6a7ea66d01c9b4462b6e01b00a1663'
-const jsCode = 'ed6e54cee45b4cce56960b14d0cb327b'
-export const mapStyle = 'amap://styles/c207e36d57eebc392121b4e798b7a8d4'
+const KEY = '410b3387094888ab763176e07249533a'
+const jsCode = 'a8f12cd6ac0299c870aa2e1e5013122c'
+export const mapStyle = 'amap://styles/a7d6236c7a5e62e3e36fd31d8376a96a'
 
 export function setupGdMap() {
   const mapSecurity = document.createElement('script')

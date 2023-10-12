@@ -19,6 +19,7 @@ export default function GdMap({ onload, className, options }: GdMapProps) {
   function initMapbox(option?: any) {
     const map = new window.AMap.Map(mapContainer.current, {
       mapStyle: 'amap://styles/whitesmoke',
+      // mapStyle,
       zoom: 4,
       center: [106.586254, 33.514657],
       viewMode: '3D',
