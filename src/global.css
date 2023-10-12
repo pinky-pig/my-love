@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #F3EDDC;
 }
 
 code {
@@ -16,21 +15,40 @@ code {
 /* 
   利用 transition view api ，设置类名为 transition-text 的要素的动画
   https://developer.chrome.com/docs/web-platform/view-transitions/
+  这里使用 useViewNavigate 的 expand 动画，如果想使用通用的，可以使用下面的 blur-transition
 */
 .transition-text {
   view-transition-name: transition-text;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+.shrink-transition::view-transition-old(root) {
+  z-index: 9999;
+}
+.shrink-transition::view-transition-new(root) {
+  z-index: 1;
+}
 
 /* Views Animation */
-::view-transition-old(root) {
+/* ::view-transition-old(root) {
   animation: blur-transition-in 0.5s ease-in-out 1 forwards;
 }
 ::view-transition-new(root) {
   animation: blur-transition-out 0.5s ease-in-out 1 forwards;
-}
+} */
 
-@keyframes blur-transition-in {
+/* @keyframes blur-transition-in {
   0%{
     filter: blur(0);
 	  opacity: 1
@@ -49,5 +67,5 @@ code {
     filter: blur(0);
 	  opacity: 1
   }
-}
+} */
 

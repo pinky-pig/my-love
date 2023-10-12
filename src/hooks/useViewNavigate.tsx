@@ -9,17 +9,74 @@ import type { NavigateFunction, NavigateOptions } from 'react-router-dom'
  * @param options router options
  * @returns the same to react-router-dom
  */
-export function viewNavigate(navigate: NavigateFunction, to: string, options?: NavigateOptions | undefined) {
+export function viewNavigate(
+  navigate: NavigateFunction,
+  to: string,
+  event: React.MouseEvent,
+  expandTransition?: {
+    type: 'expand' | 'shrink'
+    color: string
+    duration?: number
+  },
+  options?: NavigateOptions | undefined,
+) {
   // @ts-expect-error: Transition API
   if (!document.startViewTransition) {
     return navigate(to)
   }
   else {
+    if (!expandTransition) {
+      // @ts-expect-error: Transition API
+      document.startViewTransition(() => {
+        flushSync(() => {
+          navigate(to)
+        })
+      })
+      return
+    }
+
+    const x = event.clientX
+    const y = event.clientY
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y),
+    )
+    const isShrink = expandTransition.type === 'shrink'
+
     // @ts-expect-error: Transition API
-    return document.startViewTransition(() => {
+    const transition = document.startViewTransition(() => {
       flushSync(() => {
+        const root = document.documentElement
+        root.classList.remove('expand-transition')
+        root.classList.remove('shrink-transition')
+        root.classList.add(isShrink ? 'shrink-transition' : 'expand-transition')
         navigate(to)
       })
     })
+
+    transition.ready
+      .then(() => {
+        document.documentElement.style.background = expandTransition?.color || '#BBD5AA'
+
+        handleTransition()
+        function handleTransition() {
+          const clipPath = [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ]
+          document.documentElement.animate(
+            {
+              clipPath: isShrink ? [...clipPath].reverse() : clipPath,
+            },
+            {
+              duration: expandTransition?.duration || 400,
+              easing: 'ease-in-out',
+              pseudoElement: isShrink
+                ? '::view-transition-old(root)'
+                : '::view-transition-new(root)',
+            },
+          )
+        }
+      })
   }
 }

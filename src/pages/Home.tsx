@@ -81,16 +81,16 @@ export default function Home() {
       {/* second */}
       <div>
         <EarthEmoji
-          className="transition-text text-32 cursor-pointer"
-          onClick={() => {
-            viewNavigate(navigate, '/map')
+          className="text-32 cursor-pointer"
+          onClick={(e) => {
+            viewNavigate(navigate, '/map', e, { type: 'expand', color: '#BBD5AA' })
           }}
         />
 
         <VideoEmoji
           className="text-32 cursor-pointer"
-          onClick={() => {
-            viewNavigate(navigate, '/video')
+          onClick={(e) => {
+            viewNavigate(navigate, '/video', e, { type: 'expand', color: '#000000' })
           }}
         />
 
