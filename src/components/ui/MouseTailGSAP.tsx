@@ -1,13 +1,27 @@
-import { useMouse } from 'ahooks'
 import React from 'react'
 import gsap from 'gsap'
 
 export default React.memo(() => {
-  const { clientX, clientY } = useMouse()
   const svgRef = React.useRef<any>(null)
 
   // cursor 尺寸
   const size = '200'
+
+  // cursor 位置
+  const [clientX, setClientX] = React.useState(Number.NaN)
+  const [clientY, setClientY] = React.useState(Number.NaN)
+  React.useEffect(() => {
+    document.addEventListener('pointermove', handlePointerMove)
+
+    return () => {
+      document.removeEventListener('pointermove', handlePointerMove)
+    }
+  }, [])
+
+  function handlePointerMove(event: PointerEvent) {
+    setClientX(event.clientX)
+    setClientY(event.clientY)
+  }
 
   /**
    * 通过 GSAP 创建鼠标拖尾效果
@@ -50,7 +64,7 @@ export default React.memo(() => {
       }, 100) as unknown as number
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('pointermove', handleMouseMove)
 
     function setLineTransparent() {
       const doms = window.document.querySelectorAll('.gsap-tail-line') as NodeListOf<HTMLElement>
@@ -152,14 +166,19 @@ export default React.memo(() => {
   }, [])
 
   return (
-    <div className="fixed top-0 left-0 bottom-0 right-0 w-full h-full pointer-events-none z-99">
+    <div
+      className="fixed top-0 left-0 bottom-0 right-0 w-full h-full pointer-events-none z-99"
+    >
+      {/* 拖尾 */}
       <svg
         ref={svgRef}
         className="absolute top-0 left-0 w-full h-full"
       />
+
+      {/* cursor */}
       {
         !Number.isNaN(clientX)
-        && !Number.isNaN(clientX)
+        && !Number.isNaN(clientY)
         && (
           <div
             style={{
