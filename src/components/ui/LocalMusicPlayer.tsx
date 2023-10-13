@@ -73,7 +73,7 @@ export default function LocalMusicPlayer() {
         <source src="/oh-my-love.mp3" type="audio/mpeg" />
       </audio>
 
-      <div className="relative circular w-16 h-16 grid place-items-center cursor-pointer">
+      <div className="relative circular w-16 h-16 grid place-items-center ">
         <svg className="absolute w-full h-full left-0 top-0 overflow-visible animate-[spin_24s_linear_infinite]" viewBox="0 0 100 100">
           <path
             className="fill-none"
@@ -87,12 +87,12 @@ export default function LocalMusicPlayer() {
           </text>
         </svg>
 
-        <div ref={domRef} className="w-full h-full grid place-items-center ">
+        <div ref={domRef} className="w-full h-full grid place-items-center">
           {
             isHome
               ? (
                 <CDEmoji
-                  className="relative z-10 h-2/3 "
+                  className="relative z-10 h-2/3 cursor-pointer"
                   style={{
                     animation: isPlaying ? 'light-bounce 1s infinite' : 'unset',
                   }}
@@ -103,7 +103,7 @@ export default function LocalMusicPlayer() {
                 )
               : (
                 <HomeEmoji
-                  className="relative z-10 h-2/3 "
+                  className="relative z-10 h-2/3 cursor-pointer"
                   style={{
                     animation: isPlaying ? 'light-bounce 1s infinite' : 'unset',
                   }}
