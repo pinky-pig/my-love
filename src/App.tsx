@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Loading from './components/ui/Loading'
 import DynamicRouters from '~/router'
+import Noise from '~/assets/svg/noise.svg?raw'
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
           <DynamicRouters />
         </BrowserRouter>
       </Suspense>
+
+      <div dangerouslySetInnerHTML={{ __html: Noise }} />
     </div>
   )
 }

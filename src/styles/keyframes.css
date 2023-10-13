@@ -1,0 +1,166 @@
+/* 自定义的动画 */
+@keyframes light-bounce {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+  50% {
+    transform: translateY(-10%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes squiggly-anim_a {
+  0% {
+    -webkit-filter: url(#squiggly-0);
+    filter: url(#squiggly-0);
+  }
+  25% {
+    -webkit-filter: url(#squiggly-1);
+    filter: url(#squiggly-1);
+  }
+  50% {
+    -webkit-filter: url(#squiggly-0);
+    filter: url(#squiggly-0);
+  }
+  75% {
+    -webkit-filter: url(#squiggly-1);
+    filter: url(#squiggly-1);
+  }
+  100% {
+    -webkit-filter: url(#squiggly-0);
+    filter: url(#squiggly-0);
+  }
+}
+
+@keyframes squiggly-anim_b {
+  0% {
+    -webkit-filter: url(#squiggly-4);
+    filter: url(#squiggly-4)
+  }
+
+  25% {
+    -webkit-filter: url(#squiggly-5);
+    filter: url(#squiggly-5)
+  }
+
+  50% {
+    -webkit-filter: url(#squiggly-6);
+    filter: url(#squiggly-6)
+  }
+
+  75% {
+    -webkit-filter: url(#squiggly-5);
+    filter: url(#squiggly-5)
+  }
+
+  to {
+    -webkit-filter: url(#squiggly-4);
+    filter: url(#squiggly-4)
+  }
+  }
+  @keyframes cover_in {
+  0% {
+    opacity: 0;
+    transform: skewY(-8deg) translate(-50%)
+  }
+
+  25% {
+    opacity: 1;
+    transform: skewY(-8deg) translate(0)
+  }
+}
+
+@keyframes point_active {
+  0% {
+    transform: translateY(0)
+  }
+
+  50% {
+    transform: translateY(calc(var(--f_s)*-0.25))
+  }
+
+  to {
+    transform: translateY(0)
+  }
+}
+
+@keyframes link_rotation {
+  0% {
+    transform: rotate("0deg")
+  }
+
+  to {
+    transform: rotate("300deg")
+  }
+}
+
+@keyframes stroke_animation {
+  0% {
+    stroke-dashoffset: 0
+  }
+
+  to {
+    stroke-dashoffset: 20
+  }
+}
+
+@keyframes hero_visual_in {
+  0% {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+    -webkit-clip-path: inset(100% 0 0 0);
+    transform: scale(1.1) translateY(calc(var(--row)*2))
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    -webkit-clip-path: inset(0);
+    transform: scale(1) translateY(0)
+  }
+}
+
+@keyframes hero_visual_out {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0)
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1) translateY(calc(var(--row)*1))
+  }
+}
+
+@keyframes mask-play {
+  0% {
+    -webkit-mask-position-x: 0;
+    mask-position-x: 0
+  }
+
+  to {
+    -webkit-mask-position-x: 100%;
+    mask-position-x: 100%
+  }
+}
+
+@keyframes figure_in {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    -webkit-clip-path: inset(0 0 100% 0);
+    transform: scale(1.1) translateY(calc(var(--row)*2))
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    -webkit-clip-path: inset(0);
+    transform: scale(1) translateY(0)
+  }
+}
