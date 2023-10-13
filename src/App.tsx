@@ -1,12 +1,16 @@
+import { Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import Loading from './components/ui/Loading'
 import DynamicRouters from '~/router'
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <DynamicRouters />
-      </BrowserRouter>
+      <Suspense fallback={<Loading />}>
+        <BrowserRouter>
+          <DynamicRouters />
+        </BrowserRouter>
+      </Suspense>
     </div>
   )
 }

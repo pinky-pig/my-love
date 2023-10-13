@@ -21,7 +21,7 @@ export default function Loading() {
       >
         <span className="text-6 tracking-2px">
           Arvin
-          &nbsp;<HeartEmoji />&nbsp;
+          &nbsp;<HeartEmoji className="animate-bounce" />&nbsp;
           Zoe
         </span>
         <span className="text-8 tracking-6px">我們一起的生活</span>

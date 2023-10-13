@@ -69,7 +69,7 @@ export default function LocalMusicPlayer() {
         isHome && setIsOnDOM(false)
       }}
     >
-      <audio ref={audioRef}>
+      <audio loop ref={audioRef}>
         <source src="/oh-my-love.mp3" type="audio/mpeg" />
       </audio>
 
