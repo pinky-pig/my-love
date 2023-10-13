@@ -10,6 +10,8 @@ export const ThemePalettes = {
   pink: '#F2BDBD',
   purple: '#CBBDD7',
   gray: '#DEDEDE',
+
+  deepBlue: '#3E4857',
 }
 
 export const pageColor = {
