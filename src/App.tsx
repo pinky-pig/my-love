@@ -13,7 +13,7 @@ function App() {
         </BrowserRouter>
       </Suspense>
 
-      <div dangerouslySetInnerHTML={{ __html: Noise }} />
+      <div className="hidden" dangerouslySetInnerHTML={{ __html: Noise }} />
     </div>
   )
 }
