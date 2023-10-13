@@ -80,7 +80,6 @@ code {
 }
 
 /* 自定义的动画 */
-
 @keyframes light-bounce {
   0% {
     transform: translateY(0);
@@ -93,5 +92,28 @@ code {
   100% {
     transform: translateY(0);
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes squiggly-anim_a {
+  0% {
+    -webkit-filter: url(#squiggly-0);
+    filter: url(#squiggly-0);
+  }
+  25% {
+    -webkit-filter: url(#squiggly-1);
+    filter: url(#squiggly-1);
+  }
+  50% {
+    -webkit-filter: url(#squiggly-0);
+    filter: url(#squiggly-0);
+  }
+  75% {
+    -webkit-filter: url(#squiggly-1);
+    filter: url(#squiggly-1);
+  }
+  100% {
+    -webkit-filter: url(#squiggly-0);
+    filter: url(#squiggly-0);
   }
 }
