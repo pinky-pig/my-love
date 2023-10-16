@@ -1,7 +1,7 @@
 import { lazy } from 'react'
 import { useRoutes } from 'react-router-dom'
 import Guard from './Guard'
-import Home from '~/pages/Home'
+import Home from '~/pages/home'
 import Map from '~/pages/map'
 import Video from '~/pages/video'
 import Default from '~/layouts/Default'

@@ -1,24 +1,12 @@
-import * as React from 'react'
-import { useNavigate } from 'react-router-dom'
-import Background from '~/components/ui/Background'
-import { ThemePalettes, pageColor } from '~/config/params'
-import { viewNavigate } from '~/hooks/useViewNavigate'
-import { EarthEmoji } from '~/components/emoji/EarthEmoji'
-import { VideoEmoji } from '~/components/emoji/VideoEmoji'
+import React from 'react'
+import { ThemePalettes } from '~/config/params'
 
-export default function Home() {
-  const [fillColor, setFillColor] = React.useState(ThemePalettes.wheat)
-
-  const navigate = useNavigate()
-
+interface IPropsType {
+  setFillColor: React.Dispatch<React.SetStateAction<string>>
+}
+export default function One({ setFillColor }: IPropsType) {
   return (
-    <main
-      className="fixed top-0 left-0 bottom-0 right-0 w-full h-full p-24 box-border"
-      style={{ background: pageColor.home }}
-    >
-
-      {/* content */}
-      <div className=" flex flex-col font-semibold text-[#3E4857] text-6 select-none gap-12 ">
+    <div className=" flex flex-col font-semibold text-[#3E4857] text-6 select-none gap-12 ">
 
         <div className=" tracking-2">
           <span className="inline">
@@ -80,26 +68,5 @@ export default function Home() {
         </div>
 
       </div>
-
-      {/* second */}
-      <div>
-        <EarthEmoji
-          className="text-32 cursor-pointer"
-          onClick={(e) => {
-            viewNavigate(navigate, '/map', e, { type: 'expand', color: '#BBD5AA' })
-          }}
-        />
-
-        <VideoEmoji
-          className="text-32 cursor-pointer"
-          onClick={(e) => {
-            viewNavigate(navigate, '/video', e, { type: 'expand', color: '#000000' })
-          }}
-        />
-
-      </div>
-
-      <Background fillColor={fillColor}></Background>
-    </main>
   )
 }

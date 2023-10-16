@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import styles from './index.module.css'
 import GdMap from '~/components/ui/GdMap'
 import { pageColor } from '~/config/params'
-import { EarthEmoji } from '~/components/emoji/EarthEmoji'
-import { viewNavigate } from '~/hooks/useViewNavigate'
 
 export default function Map() {
   const navigate = useNavigate()
@@ -46,12 +44,12 @@ export default function Map() {
 
       {/* title and close */}
       <div className="absolute top-36 left-36 flex flex-col w-14 items-start gap-4 z-9">
-        <EarthEmoji
+        {/* <EarthEmoji
           className="text-14 pointer-events-auto cursor-pointer "
           onClick={(e) => {
             viewNavigate(navigate, '/', e, { type: 'shrink', color: '#BBD5AA' })
           }}
-        />
+        /> */}
         {/* <div className="text-6 tracking-3 font-bold write-vertical-right mx-auto">
           留下的足迹
         </div> */}

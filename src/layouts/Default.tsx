@@ -7,9 +7,11 @@ export default function DefaultLayout() {
     <>
       <Outlet />
 
+      {/* 鼠标轨迹运动 */}
       <MouseTailGSAP></MouseTailGSAP>
-      <LocalMusicPlayer></LocalMusicPlayer>
 
+      {/* 右上角返回按钮 */}
+      <LocalMusicPlayer></LocalMusicPlayer>
     </>
   )
 }

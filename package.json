@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "ahooks": "^3.7.8",
+    "dayjs": "^1.11.10",
     "gsap": "^3.12.2",
     "p5": "^1.7.0",
     "perfect-freehand": "^1.2.0",
