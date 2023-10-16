@@ -31,7 +31,7 @@ export default function Two({ setFillColor }: IPropsType) {
           setFillColor(ThemePalettes.pink)
         }}
         onClick={(e) => {
-          setEnableTransitionText(true)
+          setEnableTransitionText(['.transition-text'])
           viewNavigate(navigate, '/profile', e, { type: 'expand', color: ThemePalettes.pink })
         }}
       >
@@ -71,7 +71,7 @@ export default function Two({ setFillColor }: IPropsType) {
           transition: 'transform 0.3s ease-in-out',
         }}
         onClick={(e) => {
-          setEnableTransitionText(false)
+          setEnableTransitionText([])
           viewNavigate(navigate, '/video', e, { type: 'expand', color: '#000000' })
         }}
       >

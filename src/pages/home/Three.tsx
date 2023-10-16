@@ -30,7 +30,7 @@ export default function Three({ setFillColor, clearCanvas }: IPropsType) {
           setFillColor(ThemePalettes.green)
         }}
         onClick={(e) => {
-          setEnableTransitionText(false)
+          setEnableTransitionText([])
           viewNavigate(navigate, '/map', e, { type: 'expand', color: ThemePalettes.green })
         }}
       >

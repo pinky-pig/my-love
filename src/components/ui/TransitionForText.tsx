@@ -10,20 +10,18 @@ import useGlobalStore from '~/store/global'
 export default function TransitionForText() {
   const { enableTransitionText } = useGlobalStore()
 
+  const transitionClasses = enableTransitionText.join(',')
+
   return (
     <div>
       {
-        enableTransitionText
-          ? (
-            <style>
-              {`
-                .transition-text {
-                  view-transition-name: transition-text;
-                }
-              `}
-            </style>
-            )
-          : null
+        <style>
+          {`
+            ${transitionClasses} {
+              view-transition-name: transition-text;
+            }
+          `}
+        </style>
       }
     </div>
   )
