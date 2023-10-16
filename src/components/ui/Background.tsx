@@ -1,16 +1,24 @@
 import * as React from 'react'
 import p5 from 'p5'
 
-export default function Background({
+interface IBackgroundType {
+  fillColor: string
+  backgroundColor?: string
+}
+export interface BackgroundRef {
+  clearCanvas: () => void
+}
+function Background({
   backgroundColor = '#F3EDDC',
   fillColor = '#BBD6AA90',
-}) {
+}: IBackgroundType,
+ref: React.Ref<BackgroundRef>) {
   // 设置最小距离阈值
   const minDistanceThreshold = 20
   const radius = 200
 
   const backgroundRef = React.useRef(null)
-  let p5Instance: any = null
+  const p5Instance = React.useRef<any | null>(null)
 
   const fillColorRef = React.useRef(fillColor)
   React.useEffect(() => {
@@ -18,7 +26,7 @@ export default function Background({
   }, [fillColor])
 
   React.useEffect(() => {
-    p5Instance = new p5((p5: any) => {
+    p5Instance.current = new p5((p5: any) => {
       // 鼠标初始位置
       let prevMousePositions = { x: 0, y: 0 }
 
@@ -82,9 +90,17 @@ export default function Background({
 
     // 返回清理函数，在组件卸载或下一次调用 useEffect 之前执行
     return () => {
-      p5Instance.remove()
+      p5Instance.current.remove()
     }
   }, []) // 传递空的依赖数组以确保只在组件挂载时运行一次
+
+  // 使用 ref 来引用子组件内部的方法或元素
+  React.useImperativeHandle(ref, () => ({
+    clearCanvas: () => {
+      if (p5Instance.current && p5Instance.current.clear)
+        p5Instance.current.clear()
+    },
+  }))
 
   return (
     <div
@@ -93,3 +109,5 @@ export default function Background({
     />
   )
 }
+
+export default React.forwardRef(Background)

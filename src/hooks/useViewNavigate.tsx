@@ -22,14 +22,14 @@ export function viewNavigate(
 ) {
   // @ts-expect-error: Transition API
   if (!document.startViewTransition) {
-    return navigate(to)
+    return navigate(to, { ...options })
   }
   else {
     if (!expandTransition) {
       // @ts-expect-error: Transition API
       document.startViewTransition(() => {
         flushSync(() => {
-          navigate(to)
+          navigate(to, { ...options })
         })
       })
       return
@@ -50,7 +50,7 @@ export function viewNavigate(
         root.classList.remove('expand-transition')
         root.classList.remove('shrink-transition')
         root.classList.add(isShrink ? 'shrink-transition' : 'expand-transition')
-        navigate(to)
+        navigate(to, { ...options })
       })
     })
 

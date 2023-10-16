@@ -5,8 +5,9 @@ import { ThemePalettes } from '~/config/params'
 
 interface IPropsType {
   setFillColor: React.Dispatch<React.SetStateAction<string>>
+  clearCanvas: () => void
 }
-export default function Three({ setFillColor }: IPropsType) {
+export default function Three({ setFillColor, clearCanvas }: IPropsType) {
   const navigate = useNavigate()
 
   return (
@@ -41,7 +42,7 @@ export default function Three({ setFillColor }: IPropsType) {
       </span>
 
       <span
-        className="inline-block text-8 text-transparent hover:!scale-110"
+        className="inline-block text-8 text-transparent hover:!scale-110 cursor-pointer"
         style={{
           WebkitTextStroke: '2px #3E4857',
           transition: 'transform 0.3s linear',
@@ -50,8 +51,13 @@ export default function Three({ setFillColor }: IPropsType) {
       >
         各種可能
       </span>
-      <span className="inline">
-        🌸。
+      <span
+        className="inline hover:!scale-110 cursor-pointer"
+        onClick={(e) => {
+          clearCanvas()
+        }}
+      >
+        🎨。
       </span>
 
     </div>
