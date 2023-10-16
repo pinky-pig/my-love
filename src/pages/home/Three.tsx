@@ -25,10 +25,10 @@ export default function Three({ setFillColor, clearCanvas }: IPropsType) {
         }}
 
         onPointerOver={() => {
-          setFillColor(ThemePalettes.yellow)
+          setFillColor(ThemePalettes.green)
         }}
         onClick={(e) => {
-          viewNavigate(navigate, '/map', e, { type: 'expand', color: '#BBD5AA' })
+          viewNavigate(navigate, '/map', e, { type: 'expand', color: ThemePalettes.green })
         }}
       >
         <span >足跡</span>
@@ -47,7 +47,7 @@ export default function Three({ setFillColor, clearCanvas }: IPropsType) {
           WebkitTextStroke: '2px #3E4857',
           transition: 'transform 0.3s linear',
         }}
-        onPointerOver={() => setFillColor(ThemePalettes.green)}
+        onPointerOver={() => setFillColor(ThemePalettes.yellow)}
       >
         各種可能
       </span>
