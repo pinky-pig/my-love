@@ -45,12 +45,16 @@ export default function Three({ setFillColor, clearCanvas }: IPropsType) {
       </span>
 
       <span
-        className="inline-block text-8 text-transparent hover:!scale-110 cursor-pointer"
+        className="transition-text-life inline-block text-8 text-transparent hover:!scale-110 cursor-pointer"
         style={{
           WebkitTextStroke: '2px #3E4857',
           transition: 'transform 0.3s linear',
         }}
         onPointerOver={() => setFillColor(ThemePalettes.yellow)}
+        onClick={(e) => {
+          setEnableTransitionText(['.transition-text-life'])
+          viewNavigate(navigate, '/life', e, { type: 'expand', color: ThemePalettes.yellow })
+        }}
       >
         各種可能
       </span>

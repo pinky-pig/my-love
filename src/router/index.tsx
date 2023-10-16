@@ -5,6 +5,7 @@ import Home from '~/pages/home'
 import Map from '~/pages/map'
 import Video from '~/pages/video'
 import Profile from '~/pages/profile'
+import Life from '~/pages/life'
 import Default from '~/layouts/Default'
 import Loading from '~/components/ui/Loading'
 
@@ -44,6 +45,10 @@ const routes = [
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/life',
+        element: <Life />,
       },
     ],
   },

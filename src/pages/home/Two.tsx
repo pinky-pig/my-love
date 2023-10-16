@@ -43,13 +43,17 @@ export default function Two({ setFillColor }: IPropsType) {
       </span>
 
       <div
-        className="inline-block text-14 text-transparent hover:!scale-110 cursor-pointer"
+        className="transition-text-timeline inline-block text-14 text-transparent hover:!scale-110 cursor-pointer"
         style={{
           WebkitTextStroke: '2px #3E4857',
           transition: 'transform 0.3s linear',
         }}
         onPointerOver={() => {
           setFillColor(ThemePalettes.purple)
+        }}
+        onClick={(e) => {
+          setEnableTransitionText(['.transition-text-timeline'])
+          viewNavigate(navigate, '/timeline', e, { type: 'expand', color: '#000000' })
         }}
       >
         {daysDiff}

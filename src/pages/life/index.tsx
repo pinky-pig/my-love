@@ -1,6 +1,7 @@
+import React from 'react'
 import { pageColor } from '~/config/params'
 
-export default function Timeline() {
+export default function Life() {
   return (
     <div
       className='w-screen h-screen overflow-hidden grid place-items-center p-10 box-border'
@@ -8,7 +9,7 @@ export default function Timeline() {
     >
 
       <div className="flex flex-row w-full h-full">
-        <div className="transition-text-timeline text-4xl">Timeline</div>
+        <div className="transition-text-life text-4xl">Life</div>
       </div>
 
     </div>
