@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { ThemePalettes, home_constant } from '~/config/params'
 import TVEmoji from '~/components/emoji/TVEmoji'
 import { viewNavigate } from '~/hooks/useViewNavigate'
+import useGlobalStore from '~/store/global'
 
 interface IPropsType {
   setFillColor: React.Dispatch<React.SetStateAction<string>>
@@ -13,6 +14,8 @@ export default function Two({ setFillColor }: IPropsType) {
   const endDate = dayjs(new Date())
   const daysDiff = endDate.diff(startDate, 'day')
   const navigate = useNavigate()
+
+  const { setEnableTransitionText } = useGlobalStore()
 
   return (
     <div className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 max-w-70vw">
@@ -28,6 +31,7 @@ export default function Two({ setFillColor }: IPropsType) {
           setFillColor(ThemePalettes.pink)
         }}
         onClick={(e) => {
+          setEnableTransitionText(true)
           viewNavigate(navigate, '/profile', e, { type: 'expand', color: ThemePalettes.pink })
         }}
       >
@@ -67,6 +71,7 @@ export default function Two({ setFillColor }: IPropsType) {
           transition: 'transform 0.3s ease-in-out',
         }}
         onClick={(e) => {
+          setEnableTransitionText(false)
           viewNavigate(navigate, '/video', e, { type: 'expand', color: '#000000' })
         }}
       >

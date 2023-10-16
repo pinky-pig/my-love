@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { viewNavigate } from '~/hooks/useViewNavigate'
 import { ThemePalettes } from '~/config/params'
+import useGlobalStore from '~/store/global'
 
 interface IPropsType {
   setFillColor: React.Dispatch<React.SetStateAction<string>>
@@ -9,6 +10,7 @@ interface IPropsType {
 }
 export default function Three({ setFillColor, clearCanvas }: IPropsType) {
   const navigate = useNavigate()
+  const { setEnableTransitionText } = useGlobalStore()
 
   return (
     <div className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 max-w-70vw">
@@ -28,6 +30,7 @@ export default function Three({ setFillColor, clearCanvas }: IPropsType) {
           setFillColor(ThemePalettes.green)
         }}
         onClick={(e) => {
+          setEnableTransitionText(false)
           viewNavigate(navigate, '/map', e, { type: 'expand', color: ThemePalettes.green })
         }}
       >

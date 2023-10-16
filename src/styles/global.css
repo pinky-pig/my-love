@@ -20,9 +20,9 @@ code {
   https://developer.chrome.com/docs/web-platform/view-transitions/
   这里使用 useViewNavigate 的 expand 动画，如果想使用通用的，可以使用下面的 blur-transition
 */
-.transition-text {
+/* .transition-text {
   view-transition-name: transition-text;
-}
+} */
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
