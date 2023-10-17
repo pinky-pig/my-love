@@ -19,7 +19,8 @@ export const pageColor = {
   home: ThemePalettes.cream,
   video: ThemePalettes.black,
   map: ThemePalettes.green,
-  timeline: ThemePalettes.pink,
+  timeline: ThemePalettes.purple,
+  profile: ThemePalettes.pink,
 }
 
 export const home_constant = {

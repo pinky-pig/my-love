@@ -5,7 +5,7 @@ export default function Profile() {
   return (
     <div
       className='w-screen h-screen overflow-hidden grid place-items-center p-10 box-border'
-      style={{ background: pageColor.timeline }}
+      style={{ background: pageColor.profile }}
     >
 
       <div className="flex flex-row w-full h-full">

@@ -53,7 +53,7 @@ export default function Two({ setFillColor }: IPropsType) {
         }}
         onClick={(e) => {
           setEnableTransitionText(['.transition-text-timeline'])
-          viewNavigate(navigate, '/timeline', e, { type: 'expand', color: '#000000' })
+          viewNavigate(navigate, '/timeline', e, { type: 'expand', color: ThemePalettes.purple })
         }}
       >
         {daysDiff}
