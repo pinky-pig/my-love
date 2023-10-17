@@ -14,6 +14,25 @@
   }
 }
 
+@keyframes shake {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25%{
+    transform: scale(1.1) rotate(-20deg);
+  }
+  50% {
+    transform: scale(1) rotate(0deg);
+  }
+  75%{
+    transform: scale(1.1) rotate(20deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+
 @keyframes squiggly-anim_a {
   0% {
     -webkit-filter: url(#squiggly-0);

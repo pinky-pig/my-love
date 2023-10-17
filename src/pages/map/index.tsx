@@ -1,24 +1,67 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+
+import gsap from 'gsap'
+import { MotionPathPlugin } from 'gsap/all'
 import styles from './index.module.css'
 import GdMap from '~/components/ui/GdMap'
 import { pageColor } from '~/config/params'
+import { AliyunGEODataVUrl, Locations } from '~/config/gdMap'
+import ParabolicSVG from '~/components/ui/ParabolicSVG'
 
 export default function Map() {
-  const navigate = useNavigate()
-
   function mapOnload(map: any) {
     window.mapInstance = map
     map.on('complete', () => {
       // 地图图块加载完成后触发
+      initCity(Locations, map)
     })
   }
 
+  /**
+   * 1. 设置动画路径
+   * 2. 开启 GSAP 动画
+   */
+  const [parabolicCoords, setParabolicCoords] = React.useState([0, 0])
+  function startAnimation(e: React.MouseEvent) {
+    setParabolicCoords([e.clientX, e.clientY])
+    const movingDiv = document.querySelector('#movingDiv')
+    const tl = gsap.timeline({ repeat: 0, repeatDelay: 1 })
+    tl.to(movingDiv, {
+      duration: 5,
+      motionPath: {
+        path: '#parabolicPath',
+        align: '#parabolicPath',
+        alignOrigin: [0.5, 0.5],
+      },
+      ease: 'power1.inOut',
+    })
+  }
+
+  React.useEffect(() => {
+    gsap.registerPlugin(MotionPathPlugin)
+  }, [])
+
   return (
     <div
-      className='w-screen h-screen overflow-hidden flex flex-col justify-center items-center'
+      className='w-screen h-screen overflow-hidden flex flex-col justify-center items-center box-border'
       style={{ background: pageColor.map }}
     >
+
+      <div
+        onClick={(e) => {
+          startAnimation(e)
+        }}
+        className="absolute right-10 bottom-4 rounded-full w-10 h-10 bg-pink-300 cursor-pointer z-99"
+      />
+
+      <div
+        id="movingDiv"
+        className="absolute z-99 top-0 left-0"
+      >
+        g
+      </div>
+
+      <ParabolicSVG coords={ parabolicCoords } />
 
       {/* 地图 */}
       <div className="w-70vw h-[calc(100%_-_9rem)] z-1 relative overflow-hidden ">
@@ -57,4 +100,78 @@ export default function Map() {
 
     </div>
   )
+}
+
+/**
+ * 根据城市行政区划代码从阿里云查询地图边界，上图
+ */
+function initCity(cities: typeof Locations, map: any) {
+  cities.forEach((item) => {
+    fetch(AliyunGEODataVUrl + item.code)
+      .then((response) => { return response.json() })
+      .then((city) => {
+        initPolygonAndMarker(city, map, item)
+      })
+  })
+}
+
+function initPolygonAndMarker(json: any, map: any, city: typeof Locations[number]) {
+  const AMap = window.AMap
+  const geojson = new AMap.GeoJSON({
+    geoJSON: json,
+    getPolygon(geojson: any, lnglats: any) {
+      const area = AMap.GeometryUtil.ringArea(lnglats[0])
+      const polygon = new AMap.Polygon({
+        path: lnglats,
+        strokeOpacity: 0.4,
+        strokeColor: '#BBD5AA',
+        strokeWeight: 2,
+        strokeStyle: 'dashed',
+        strokeDasharray: [5, 5],
+        fillColor: '#BBD5AA',
+        fillOpacity: 0.3, // 面积越大透明度越高
+      })
+      polygon.on('mouseover', () => {
+        polygon.setOptions({
+          fillOpacity: 0.1,
+        })
+      })
+      polygon.on('mouseout', () => {
+        polygon.setOptions({
+          fillOpacity: 0.3,
+        })
+      })
+      return polygon
+    },
+  })
+  map.add(geojson)
+
+  const center = json.features[0]?.properties?.center
+
+  const content = `
+    <div class="hover:scale-110 flex flex-col items-center space-y-0.5 w-fit" style="max-width: 150px;">
+      <div class="hover:animate-[shake_1.5s_ease-in-out_infinite] border-2 rounded border-solid px-1.5 flex items-center space-x-0.5 overflow-hidden w-fit cursor-pointer shadow-[rgba(170,166,170,0.40)] shadow-md bg-[rgba(152,208,255,0.5)] border-white py-[0.1875rem]">
+        <img
+          src="/logo.png"
+          class="w-4 h-4 block "
+        >
+      </div>
+    </div>
+  `
+  const jqMarker = new AMap.Marker({
+    position: center,
+    offset: new AMap.Pixel(0, -10),
+    content,
+    title: '警情',
+    zIndex: 999,
+    zoom: 13,
+    autoRotation: true,
+    map,
+    extData: { type: '警情' },
+    // label: {
+    //   direction: 'bottom',
+    //   content: labelContent,
+    //   offset: labelOffset,
+    // },
+  })
 }
