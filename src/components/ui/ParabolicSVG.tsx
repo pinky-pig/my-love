@@ -20,7 +20,7 @@ export default function ParabolicSVG({ coords }: IParabolicSVGType) {
 
 function createParabolicPath(x1: number, y1: number, x2: number, y2: number) {
   if (x2 === 0 && y2 === 0)
-    return 'M 0 0'
+    return 'M 0 0 Z'
 
   const cv = 0.2
   // 计算控制点的坐标
@@ -28,6 +28,6 @@ function createParabolicPath(x1: number, y1: number, x2: number, y2: number) {
   const cy = y2 - (y1 + y2) * cv
 
   // 构建 SVG path 字符串
-  const pathString = `M ${x2} ${y2} Q ${cx} ${cy} ${x1} ${y1}`
+  const pathString = `M ${x2} ${y2} Q ${cx} ${cy} ${x1} ${y1} Z`
   return pathString
 }
