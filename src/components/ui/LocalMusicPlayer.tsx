@@ -74,7 +74,7 @@ export default function LocalMusicPlayer() {
       </audio>
 
       <div className="relative circular w-16 h-16 grid place-items-center ">
-        <svg className="absolute w-full h-full left-0 top-0 overflow-visible animate-[spin_24s_linear_infinite]" viewBox="0 0 100 100">
+        <svg className="absolute w-full h-full left-0 top-0 overflow-visible animate-[rotating_24s_linear_infinite]" viewBox="0 0 100 100">
           <path
             className="fill-none"
             d="M 0,50 a 50,50 0 1,1 0,1 z"
