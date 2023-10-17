@@ -38,7 +38,7 @@ export default function Map() {
           align: '#parabolicPath',
           alignOrigin: [0.5, 0.5],
         },
-        // ease: 'elastic',
+        ease: 'cubic-bezier(.53,.17,.73,1.42)',
       })
     }
   }
