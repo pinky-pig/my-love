@@ -27,18 +27,26 @@ export default function Map() {
     domId: string,
   ) {
     setParabolicCoords([e.clientX, e.clientY])
-    const movingDiv = document.getElementById(domId)
 
+    const movingDiv = document.getElementById(domId)
     if (movingDiv) {
-      const tl = gsap.timeline({ repeat: 0, repeatDelay: 1 })
-      tl.to(movingDiv, {
-        duration: 2,
+      const cloneDom = movingDiv?.cloneNode(true) as HTMLElement
+      cloneDom.style.position = 'absolute'
+      cloneDom.style.zIndex = '9'
+      cloneDom.style.willChange = 'transform'
+      document.body.append(cloneDom)
+      const tl = gsap.timeline({ repeat: 0 })
+      tl.to(cloneDom, {
+        duration: 1,
         motionPath: {
           path: '#parabolicPath',
           align: '#parabolicPath',
           alignOrigin: [0.5, 0.5],
         },
         ease: 'cubic-bezier(.53,.17,.73,1.42)',
+        onComplete(e) {
+          document.body.removeChild(cloneDom)
+        },
       })
     }
   }
