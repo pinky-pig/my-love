@@ -189,7 +189,7 @@ export default function Map() {
       />
 
       {/* 地图 */}
-      <div className="w-70vw h-[calc(100%_-_9rem)] z-1 relative overflow-hidden ">
+      <div className="md:w-70vw md:h-[calc(100%_-_9rem)] md:rounded-15px rounded-none w-screen h-screen z-1 relative overflow-hidden ">
         <GdMap
           className="rounded-20px overflow-hidden"
           onload={mapOnload}
