@@ -66,7 +66,7 @@ export default function Two({ setFillColor }: IPropsType) {
       <br />
 
       <span className="inline">
-        從 2016 大一到如今，從相識到成家，我們一直快樂生活
+        從大一到如今，從相識到成家
       </span>
 
       <span
