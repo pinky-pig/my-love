@@ -33,7 +33,7 @@ function createParabolicPath(x1: number, y1: number, x2: number, y2: number) {
   if (x2 === 0 && y2 === 0)
     return 'M 0 0 Z'
 
-  const cv = 0.2
+  const cv = 0.3
   // 计算控制点的坐标
   const cx = x2 - (x2 - x1) * cv
   const cy = y2 - (y1 + y2) * cv
