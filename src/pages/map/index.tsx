@@ -20,17 +20,31 @@ export default function Map() {
   /**
    * 1. 设置动画路径
    * 2. 开启 GSAP 动画
+   *
+   * 这里逻辑比较繁琐，本来是函数的调用，结果改成了变量的监听
+   * 修改的目的是，parabolicCoords 更改后，子组件的 path 修改，然后 path DOM 渲染后
+   * 再执行 GSAP 动画。
+   * 目的就是为了在子组件的 DOM 更新后再触发动画
+   * 导致现在增加了一个 targetIdRef ，还有父组件一个 useEffect 和子组件多了一个 path 的 useEffect
+   * **useEffect 是在 DOM 渲染后再触发的**
    */
   const [parabolicCoords, setParabolicCoords] = React.useState([0, 0])
-  function startAnimation(
+  const targetIdRef = React.useRef<string | null>(null)
+  function handleClickToAnimate(
     e: React.MouseEvent | MouseEvent,
-    domId: string,
+    targetId: string,
   ) {
     setParabolicCoords([e.clientX, e.clientY])
+    targetIdRef.current = targetId
+  }
 
-    const movingDiv = document.getElementById(domId)
+  function startGSAPAnimation(targetId: string | null) {
+    if (!targetId)
+      return
+    // 此处执行GSAP动画
+    const movingDiv = document.getElementById(targetId)
     if (movingDiv) {
-      const cloneDom = movingDiv?.cloneNode(true) as HTMLElement
+      const cloneDom = movingDiv.cloneNode(true) as HTMLElement
       cloneDom.style.position = 'absolute'
       cloneDom.style.top = '0'
       cloneDom.style.left = '0'
@@ -133,7 +147,7 @@ export default function Map() {
     })
 
     cityMarker.on('click', (e: any) => {
-      startAnimation(e.originEvent, markerId)
+      handleClickToAnimate(e.originEvent, markerId)
     })
   }
 
@@ -144,7 +158,12 @@ export default function Map() {
     >
 
       {/* 抛物线 */}
-      <ParabolicSVG coords={parabolicCoords} />
+      <ParabolicSVG
+        coords={parabolicCoords}
+        startGSAPAnimation={
+          () => startGSAPAnimation(targetIdRef.current)
+        }
+      />
 
       {/* 地图 */}
       <div className="w-70vw h-[calc(100%_-_9rem)] z-1 relative overflow-hidden ">

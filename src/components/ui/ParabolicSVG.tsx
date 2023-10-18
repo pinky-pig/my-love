@@ -2,8 +2,9 @@ import React from 'react'
 
 interface IParabolicSVGType {
   coords: number[]
+  startGSAPAnimation: () => void
 }
-export default function ParabolicSVG({ coords }: IParabolicSVGType) {
+export default function ParabolicSVG({ coords, startGSAPAnimation }: IParabolicSVGType) {
   const [path, setPath] = React.useState('M 0 0')
 
   React.useEffect(() => {
@@ -11,9 +12,19 @@ export default function ParabolicSVG({ coords }: IParabolicSVGType) {
     setPath(svgPathString)
   }, [coords])
 
+  React.useEffect(() => {
+    startGSAPAnimation()
+  }, [path])
+
   return (
-    <svg className="fixed w-full h-full z-9 translate-z-0 box-border pointer-events-none" viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`}>
-      <path id="parabolicPath" fill="none" strokeWidth={2} stroke="transparent" d={path}></path>
+    <svg className="w-full h-full fixed z-9 translate-z-0 box-border pointer-events-none" viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`}>
+      <path
+        id="parabolicPath"
+        fill="none"
+        strokeWidth={2}
+        stroke="transparent"
+        d={path}
+      />
     </svg>
   )
 }
