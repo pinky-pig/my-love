@@ -37,7 +37,11 @@ export default function Map() {
     setParabolicCoords([e.clientX, e.clientY])
     targetIdRef.current = targetId
   }
-
+  /**
+   * 沿着 #parabolicPath id GSAP 运动
+   * @param targetId 要 GSAP 动画的 DOM Id
+   * @returns 如果 id 为 null，不做运动，否则就运动
+   */
   function startGSAPAnimation(targetId: string | null) {
     if (!targetId)
       return
@@ -68,6 +72,9 @@ export default function Map() {
     }
   }
 
+  /**
+   * 注册 GSAP MotionPathPlugin 插件
+   */
   React.useEffect(() => {
     gsap.registerPlugin(MotionPathPlugin)
   }, [])
@@ -85,6 +92,12 @@ export default function Map() {
     })
   }
 
+  /**
+   * 初始化区域和 marker 点
+   * @param json 区域 geo json
+   * @param map 高德地图
+   * @param city 自定义的city property
+   */
   function initPolygonAndMarker(json: any, map: any, city: typeof Locations[number]) {
     const AMap = window.AMap
     const geojson = new AMap.GeoJSON({
