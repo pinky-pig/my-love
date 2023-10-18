@@ -7,7 +7,7 @@ import type { IImagePanelExposeType } from './ImagePanel'
 import ImagePanel from './ImagePanel'
 import GdMap from '~/components/ui/GdMap'
 import { pageColor } from '~/config/params'
-import { AliyunGEODataVUrl, Locations } from '~/config/gdMap'
+import { Locations } from '~/config/gdMap'
 import ParabolicSVG from '~/components/ui/ParabolicSVG'
 
 export default function Map() {
@@ -94,7 +94,8 @@ export default function Map() {
    */
   function initCity(cities: typeof Locations, map: any) {
     cities.forEach((item) => {
-      fetch(AliyunGEODataVUrl + item.code)
+      // fetch(AliyunGEODataVUrl + item.code)
+      fetch(`/city-json/${item.code}.json`)
         .then((response) => { return response.json() })
         .then((city) => {
           initPolygonAndMarker(city, map, item)
