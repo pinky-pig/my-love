@@ -3,6 +3,8 @@ import React from 'react'
 import gsap from 'gsap'
 import { MotionPathPlugin } from 'gsap/all'
 import styles from './index.module.css'
+import type { IImagePanelExposeType } from './ImagePanel'
+import ImagePanel from './ImagePanel'
 import GdMap from '~/components/ui/GdMap'
 import { pageColor } from '~/config/params'
 import { AliyunGEODataVUrl, Locations } from '~/config/gdMap'
@@ -16,6 +18,11 @@ export default function Map() {
       initCity(Locations, map)
     })
   }
+
+  /**
+   * 图片面板
+   */
+  const ImagePanelRef = React.useRef<IImagePanelExposeType | null>(null)
 
   /**
    * 1. 设置动画路径
@@ -58,15 +65,18 @@ export default function Map() {
       document.getElementById('App')?.append(cloneDom)
       const tl = gsap.timeline({ repeat: 0 })
       tl.to(cloneDom, {
-        duration: 1,
+        duration: 0.4,
         motionPath: {
           path: '#parabolicPath',
           align: '#parabolicPath',
           alignOrigin: [0.5, 0.5],
         },
-        ease: 'cubic-bezier(.53,.17,.73,1.42)',
+        // ease: 'cubic-bezier(0,1.57,.28,1.07)',
+        ease: 'linear',
         onComplete(e) {
           document.getElementById('App')?.removeChild(cloneDom)
+
+          ImagePanelRef.current?.show()
         },
       })
     }
@@ -136,7 +146,7 @@ export default function Map() {
       <div class="hover:animate-[shake_1.5s_ease-in-out_infinite] border-2 rounded border-solid px-1.5 flex items-center space-x-0.5 overflow-hidden w-fit cursor-pointer shadow-[rgba(170,166,170,0.40)] shadow-md bg-[rgba(152,208,255,0.5)] border-white py-[0.1875rem]">
         <img
           src="/logo.png"
-          class="w-4 h-4 block "
+          class="w-4 h-4 block select-none pointer-events-none"
         >
       </div>
     </div>
@@ -199,6 +209,11 @@ export default function Map() {
           </div>
         </div>
       </div>
+
+      {/* 图片列表 */}
+      <ImagePanel
+        ref={ImagePanelRef}
+      />
 
       {/* title and close */}
       <div className="absolute top-36 left-36 flex flex-col w-14 items-start gap-4 z-9">

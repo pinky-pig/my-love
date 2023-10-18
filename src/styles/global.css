@@ -45,33 +45,11 @@ code {
 
 /* Views Animation */
 /* ::view-transition-old(root) {
-  animation: blur-transition-in 0.5s ease-in-out 1 forwards;
+  animation: blur-in 0.5s ease-in-out 1 forwards;
 }
 ::view-transition-new(root) {
-  animation: blur-transition-out 0.5s ease-in-out 1 forwards;
+  animation: blur-out 0.5s ease-in-out 1 forwards;
 } */
-
-/* @keyframes blur-transition-in {
-  0%{
-    filter: blur(0);
-	  opacity: 1
-  }
-  100%{
-    filter: blur(1rem);
-	  opacity: 0
-  }
-}
-@keyframes blur-transition-out {
-  0%{
-    filter: blur(1rem);
-	  opacity: 0
-  }
-  100%{
-    filter: blur(0);
-	  opacity: 1
-  }
-} */
-
 
 /* 高德地图样式 */
 .amap-logo{

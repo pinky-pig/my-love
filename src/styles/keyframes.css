@@ -32,6 +32,27 @@
   }
 }
 
+@keyframes blur-out {
+  0%{
+    filter: blur(0);
+	  opacity: 1
+  }
+  100%{
+    filter: blur(1rem);
+	  opacity: 0
+  }
+}
+@keyframes blur-in {
+  0%{
+    filter: blur(1rem);
+	  opacity: 0
+  }
+  100%{
+    filter: blur(0);
+	  opacity: 1
+  }
+}
+
 @keyframes rotating {
   0% {
     transform: rotate(0deg);
