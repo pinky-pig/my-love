@@ -52,6 +52,11 @@ export function ImagePanel(
     hide,
   }))
 
+  React.useEffect(() => {
+    if (panelRef.current)
+      panelRef.current.style.animation = `${styles['scale-out']} 0s forwards`
+  }, [])
+
   return (
 
     <div
