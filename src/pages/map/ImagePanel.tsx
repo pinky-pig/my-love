@@ -90,7 +90,7 @@ export function ImagePanel(
       >
 
         {
-          Array(2).fill(0).map((_, index) => (
+          Array(5).fill(0).map((_, index) => (
             <img
               key={index} // 添加一个唯一的key属性
               className="w-25 h-25 rounded-md bg-[#FFFFFF90]"
