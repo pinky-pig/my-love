@@ -32,9 +32,12 @@ export default function Map() {
     if (movingDiv) {
       const cloneDom = movingDiv?.cloneNode(true) as HTMLElement
       cloneDom.style.position = 'absolute'
+      cloneDom.style.top = '0'
+      cloneDom.style.left = '0'
       cloneDom.style.zIndex = '9'
       cloneDom.style.willChange = 'transform'
-      document.body.append(cloneDom)
+      cloneDom.setAttribute('id', 'cloneNode')
+      document.getElementById('App')?.append(cloneDom)
       const tl = gsap.timeline({ repeat: 0 })
       tl.to(cloneDom, {
         duration: 1,
@@ -45,7 +48,7 @@ export default function Map() {
         },
         ease: 'cubic-bezier(.53,.17,.73,1.42)',
         onComplete(e) {
-          document.body.removeChild(cloneDom)
+          document.getElementById('App')?.removeChild(cloneDom)
         },
       })
     }

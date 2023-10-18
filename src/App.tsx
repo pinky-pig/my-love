@@ -7,7 +7,7 @@ import Noise from '~/assets/svg/noise.svg?raw'
 
 function App() {
   return (
-    <div className="App">
+    <div id="App" className="App">
       <Suspense fallback={<Loading />}>
         <BrowserRouter>
           <DynamicRouters />
