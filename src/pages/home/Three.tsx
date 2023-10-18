@@ -13,7 +13,7 @@ export default function Three({ setFillColor, clearCanvas }: IPropsType) {
   const { setEnableTransitionText } = useGlobalStore()
 
   return (
-    <div className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 max-w-70vw">
+    <div className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 md:max-w-70vw max-w-full">
 
       <span className="inline">
         期待我們的

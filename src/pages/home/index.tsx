@@ -16,7 +16,7 @@ export default function Home() {
   }
   return (
     <main
-      className="fixed top-0 left-0 bottom-0 right-0 w-full h-full p-24 box-border font-[Cherry_Bomb_One]"
+      className="fixed pl-10vw pr-2vw pt-12vh pb-10vh top-0 left-0 bottom-0 right-0 w-full h-full box-border font-[Cherry_Bomb_One]"
       style={{ background: pageColor.home }}
     >
 

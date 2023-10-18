@@ -18,10 +18,10 @@ export default function Two({ setFillColor }: IPropsType) {
   const { setEnableTransitionText } = useGlobalStore()
 
   return (
-    <div className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 max-w-70vw">
+    <div className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 md:max-w-70vw max-w-full">
 
       <div
-        className="transition-text inline-block cursor-pointer mr-4px text-16 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
+        className="transition-text inline-block cursor-pointer mr-4px md:text-16 text-10 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
         style={{
           WebkitTextStroke: '2px #3E4857',
           textShadow: '4px 4px 0 #3e4857',
@@ -43,7 +43,7 @@ export default function Two({ setFillColor }: IPropsType) {
       </span>
 
       <div
-        className="transition-text-timeline inline-block text-14 text-transparent hover:!scale-110 cursor-pointer"
+        className="transition-text-timeline inline-block md:text-14 text-8 text-transparent hover:!scale-110 cursor-pointer"
         style={{
           WebkitTextStroke: '2px #3E4857',
           transition: 'transform 0.3s linear',
