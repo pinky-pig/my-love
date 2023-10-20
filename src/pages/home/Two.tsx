@@ -9,7 +9,10 @@ import useGlobalStore from '~/store/global'
 interface IPropsType {
   setFillColor: React.Dispatch<React.SetStateAction<string>>
 }
-export default function Two({ setFillColor }: IPropsType) {
+export function Two(
+  { setFillColor }: IPropsType,
+  ref: React.Ref<HTMLDivElement>,
+) {
   const startDate = dayjs(home_constant.dayOfLove)
   const endDate = dayjs(new Date())
   const daysDiff = endDate.diff(startDate, 'day')
@@ -18,7 +21,7 @@ export default function Two({ setFillColor }: IPropsType) {
   const { setEnableTransitionText } = useGlobalStore()
 
   return (
-    <div className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 md:max-w-70vw max-w-full">
+    <div ref={ref} className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 md:max-w-70vw max-w-full">
 
       <div
         className="transition-text inline-block cursor-pointer mr-4px md:text-16 text-10 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
@@ -85,3 +88,5 @@ export default function Two({ setFillColor }: IPropsType) {
     </div>
   )
 }
+
+export default React.forwardRef(Two)

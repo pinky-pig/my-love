@@ -2,11 +2,12 @@
 
 ## Features
 
-1. GSAP 鼠标拖尾
-2. P5.js 页面背景颜色填充
-3. View Transition API 路由页面过渡
-4. GSAP 抛物线 SVG 路径运动
-5. Dom.getAnimations() 多个动画相接
+1. P5.js 页面背景颜色填充
+2. View Transition API 路由页面过渡
+3. Dom.getAnimations() 多个动画相接
+4. GSAP 鼠标拖尾
+5. GSAP 抛物线 SVG 路径运动
+6. GSAP 鼠标滚动视差
 
 ## points
 

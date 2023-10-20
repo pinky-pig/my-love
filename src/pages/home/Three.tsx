@@ -8,12 +8,15 @@ interface IPropsType {
   setFillColor: React.Dispatch<React.SetStateAction<string>>
   clearCanvas: () => void
 }
-export default function Three({ setFillColor, clearCanvas }: IPropsType) {
+export function Three(
+  { setFillColor, clearCanvas }: IPropsType,
+  ref: React.Ref<HTMLDivElement>,
+) {
   const navigate = useNavigate()
   const { setEnableTransitionText } = useGlobalStore()
 
   return (
-    <div className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 md:max-w-70vw max-w-full">
+    <div ref={ref} className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 md:max-w-70vw max-w-full">
 
       <span className="inline">
         期待我們的
@@ -70,3 +73,5 @@ export default function Three({ setFillColor, clearCanvas }: IPropsType) {
     </div>
   )
 }
+
+export default React.forwardRef(Three)
