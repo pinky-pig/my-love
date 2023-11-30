@@ -21,8 +21,11 @@ export const pageColor = {
   map: ThemePalettes.green,
   timeline: ThemePalettes.purple,
   profile: ThemePalettes.pink,
+  life: ThemePalettes.deepBlue,
 }
 
-export const home_constant = {
+export const homeConstant = {
   dayOfLove: '2020-01-31', // 恋爱日期
 }
+
+export const staticAPI = 'http://47.116.13.177:1212'

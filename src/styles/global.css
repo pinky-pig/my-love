@@ -60,3 +60,7 @@ code {
   opacity: 0;
 }
 
+::selection {
+  background-color: #8E8FFA;
+  color: #fff;
+}

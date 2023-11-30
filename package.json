@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/themes": "^2.0.2",
     "ahooks": "^3.7.8",
     "dayjs": "^1.11.10",
     "exif-js": "^2.3.0",

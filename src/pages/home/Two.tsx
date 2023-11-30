@@ -1,7 +1,7 @@
 import React from 'react'
 import dayjs from 'dayjs'
 import { useNavigate } from 'react-router-dom'
-import { ThemePalettes, home_constant } from '~/config/params'
+import { ThemePalettes, homeConstant } from '~/config/params'
 import TVEmoji from '~/components/emoji/TVEmoji'
 import { viewNavigate } from '~/hooks/useViewNavigate'
 import useGlobalStore from '~/store/global'
@@ -13,7 +13,7 @@ export function Two(
   { setFillColor }: IPropsType,
   ref: React.Ref<HTMLDivElement>,
 ) {
-  const startDate = dayjs(home_constant.dayOfLove)
+  const startDate = dayjs(homeConstant.dayOfLove)
   const endDate = dayjs(new Date())
   const daysDiff = endDate.diff(startDate, 'day')
   const navigate = useNavigate()

@@ -4,6 +4,7 @@ import '~/styles/global.css'
 import 'virtual:uno.css'
 import App from './App'
 import { setupGdMap } from '~/config/gdMap'
+import '@radix-ui/themes/styles.css'
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
