@@ -1,116 +1,184 @@
-/* eslint-disable no-console */
-import React, { useLayoutEffect, useState } from 'react'
-import { getColorFromPalettes } from '@/utils/random-color'
-import { pageColor } from '~/config/params'
+import { Dialog } from '@radix-ui/themes'
+import React from 'react'
+import { InteractiveMarquee } from '~/components/ui/Marquee'
+import { OUR_TAGS, pageColor, staticAPI } from '~/config/params'
+import MechanicalLove from '~/assets/svg/mechanicalLove.svg'
+import Experiments from '~/assets/svg/experiments.svg'
 
-const maximumInLine = 5
-const size = 100
-const gap = 10
-
-const default_images = [
-  { id: 0, position: { x: 0, y: 0 } },
-  { id: 1, position: { x: 0, y: 0 } },
-  { id: 2, position: { x: 0, y: 0 } },
-  { id: 3, position: { x: 0, y: 0 } },
-  { id: 4, position: { x: 0, y: 0 } },
-  { id: 5, position: { x: 0, y: 0 } },
-  { id: 6, position: { x: 0, y: 0 } },
-  { id: 7, position: { x: 0, y: 0 } },
-  { id: 8, position: { x: 0, y: 0 } },
-  { id: 9, position: { x: 0, y: 0 } },
-  { id: 10, position: { x: 0, y: 0 } },
-  { id: 11, position: { x: 0, y: 0 } },
-  { id: 12, position: { x: 0, y: 0 } },
-  { id: 13, position: { x: 0, y: 0 } },
-  { id: 14, position: { x: 0, y: 0 } },
-  { id: 15, position: { x: 0, y: 0 } },
-  { id: 16, position: { x: 0, y: 0 } },
-  { id: 17, position: { x: 0, y: 0 } },
-  { id: 18, position: { x: 0, y: 0 } },
-  { id: 19, position: { x: 0, y: 0 } },
-].map((image, index) => {
-  image.id = index
-  const row = Math.floor(index / maximumInLine)
-  const column = index % maximumInLine
-  return {
-    ...image,
-    position: {
-      x: column * (size + gap),
-      y: row * (size + gap),
-    },
-  }
-})
-
-export default function Profile() {
-  const [images, setImages] = useState(default_images)
-
-  useLayoutEffect(() => {
-    console.log(images)
-  }, [images])
-
-  const handleClickImage = (image: typeof default_images[0]) => {
-    const explosionRadius = 100
-
-    setImages(prevImages =>
-      prevImages.map((item) => {
-        const distance = Math.sqrt(
-          (item.position.x - image.position.x) ** 2 + (item.position.y - image.position.y) ** 2,
-        )
-
-        if (distance <= explosionRadius)
-          return { ...item, position: { x: 50, y: 50 } }
-
-        return item
-      }),
-    )
-  }
+export default function Life() {
+  const images = Array(3).fill(0).map((item, index) => {
+    return `${staticAPI}/结婚照%20(${index + 1}).jpg`
+  })
 
   return (
     <div
-      className="
-        w-screen h-screen overflow-hidden
-        flex flex-col gap-10
-        px-12.5vw py-18
+      className='
+        w-screen h-screen overflow-y-auto overflow-x-hidden
+        px-10px py-8dvh
         box-border
         text-[#3E4857]
-      "
+        px-8.333vw
+      '
       style={{ background: pageColor.profile }}
     >
-      <div className="flex flex-row w-full ">
+
+      {/* 副标题 */}
+      <div className="flex flex-row w-full">
         <div
-          className="transition-text font-extrabold tracking-2"
-          style={{
-            fontSize: 'calc(calc(16px + 0.2vw) * 3.2)',
-          }}
+          className="transition-text font-600 tracking-1px"
+          style={{ fontSize: 'calc(1rem + 0.3vw)' }}
         >
-          我們
+           我們
         </div>
       </div>
 
-      <div className="relative w-full h-full">
+      {/* 标题 */}
+      <h1
+        className="font-800 mb-3.5vw"
+        style={{
+          fontSize: 'calc(calc(1rem + 0.3vw)*3.2)',
+          letterSpacing: 'calc(calc(1rem + 0.3vw)*0.4)',
+        }}
+      >
+        <span> 從大學戀愛 </span>
+        <br></br>
+        <span> 到2023年結婚 </span>
+      </h1>
+
+      {/* 内容 */}
+      <div
+        className="font-400 tracking-1px max-w-500px w-80vw leading-10 mb-8vw"
+        style={{
+          fontSize: 'calc(1rem + 0.3vw)',
+        }}
+      >
+        <img
+          className="w-200px bg-transparent object-cover rounded-0.66em"
+          style={{
+            // boxShadow: '-3px 3px 0 0 #3e4857',
+            // border: '0.15em solid #3e4857',
+            animation: 'squiggly-anim-a 0.8s infinite',
+          }}
+          src={MechanicalLove}
+          alt=""
+        />
+      </div>
+
+      <div
+        className="
+          w-full px-4vw pb-8dvh overflow-hidden box-border
+          flex flex-row flex-wrap justify-center gap-10px
+          cursor-pointer relative
+        "
+      >
         {images.map((image, index) => (
           <div
-            key={index}
-            style={{
-              width: size,
-              height: size,
-              transform: `translate3d(${image.position.x}px, ${image.position.y}px, 0)`,
-              willChange: 'transform',
-              background: getColorFromPalettes(),
-              position: 'absolute',
-              top: 0,
-              left: 0,
-            }}
-            onClick={() => {
-              handleClickImage(image)
-            }}
+            key={image}
+            className="pointer-events-none select-none"
           >
-            {image.id}
-            <br></br>
-            {image.position.x} - {image.position.y}
+
+            <Dialog.Root>
+              <Dialog.Trigger>
+                <img
+                  className="
+                    pointer-events-auto
+                    select-none
+                    object-contain
+                    h-24vw
+                    bg-[#00000040]
+                  "
+                  src={image}
+                />
+              </Dialog.Trigger>
+              <Dialog.Content
+                style={{
+                  padding: '10px',
+                  overflow: 'hidden',
+                  height: '80vh',
+                  background: '#00000040',
+                  boxShadow: 'none',
+                  backdropFilter: 'blur(10px)',
+                }}
+              >
+                <img
+                  className="w-full h-full object-contain"
+                  src={image}
+                />
+              </Dialog.Content>
+            </Dialog.Root>
+
           </div>
         ))}
+
+        <div className="absolute w-full bottom-10 left-0 text-center skew-y-[-4deg]">
+          <span
+            className="
+              bg-white bg-opacity-60
+              text-[#3e4857] font-800
+              px-3vw py-2
+              animate-[squiggly-anim-a_0.8s_infinite]
+            "
+            style={{
+              fontSize: 'calc(calc(14px + 0.2vw)*1.75)',
+            }}
+          >
+            新婚照片
+          </span>
+        </div>
       </div>
+
+      <div className="flex justify-between mt-20px mb-40px">
+        <span
+          style={{
+            fontSize: 'calc(calc(16px + 0.2vw)*1.4)',
+            fontWeight: '600',
+            letterSpacing: '2px',
+          }}
+        >
+          「爱爱爱爱春春春春💕」
+        </span>
+
+        <div>
+          <img
+            className="w-200px bg-transparent object-cover rounded-0.66em"
+            style={{
+              animation: 'squiggly-anim-a 0.8s infinite',
+            }}
+            src={Experiments}
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col skew-y-[-4deg] mt-30px mb-60px -ml-10%">
+        {
+          OUR_TAGS.map((row, index) => (
+            <InteractiveMarquee
+              key={index}
+              speed={[1, 1.46, 1.618][index % 3]}
+              className="flex flex-row w-max h-full items-center z-1"
+            >
+              {
+                row.map(item => (
+                  <div
+                    key={item}
+                    draggable="false"
+                    className="flex-shrink-0 flex-grow-0 font-800 text-transparent"
+                    style={{
+                      fontSize: 'calc(calc(16px + 0.2vw)*2.4)',
+                      WebkitTextStroke: '1px #3e4857',
+                      margin: '0 calc(calc(14px + 0.2vw)*1.2)',
+                    }}
+                  >
+                    {item}
+                  </div>
+                ))
+              }
+            </InteractiveMarquee>
+          ))
+        }
+      </div>
+
     </div>
   )
 }

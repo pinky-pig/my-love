@@ -13,7 +13,7 @@ export default function Video() {
           style={
             { WebkitMask: `url(${VideoMask}) no-repeat center center/100% 100%` }
           }
-          src='https://vjs.zencdn.net/v/oceans.mp4'
+          src='/videos/打跳.mp4'
         />
 
       </div>

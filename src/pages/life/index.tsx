@@ -1,12 +1,18 @@
 import React from 'react'
-import { Dialog } from '@radix-ui/themes'
 import { pageColor, staticAPI } from '~/config/params'
 import Footer from '~/components/ui/Footer'
+import MyImage from '@/components/ui/MyImage'
 
 export default function Life() {
-  const images = Array(45).fill(0).map((item, index) => {
-    return `${staticAPI}/云南旅行%20(${index + 1}).jpg`
-  })
+  const [images, setImages] = React.useState<string[]>([])
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setImages(Array(45).fill(0).map((item, index) => {
+        return `${staticAPI}/云南旅行%20(${index + 1}).jpg`
+      }))
+    }, 1000)
+  }, [])
 
   return (
     <div
@@ -21,12 +27,14 @@ export default function Life() {
     >
 
       {/* 副标题 */}
-      <h2
-        className="font-600 tracking-1px"
-        style={{ fontSize: 'calc(1rem + 0.3vw)' }}
-      >
-        各种可能
-      </h2>
+      <div className="flex flex-row w-full">
+        <div
+          className="transition-text-life font-600 tracking-1px"
+          style={{ fontSize: 'calc(1rem + 0.3vw)' }}
+        >
+           雲南旅行
+        </div>
+      </div>
 
       {/* 标题 */}
       <h1
@@ -48,10 +56,10 @@ export default function Life() {
           fontSize: 'calc(1rem + 0.3vw)',
         }}
       >
-        和春春一起的生活很快乐，超级超级爱春春。
-        可能生活会有很多很多的限制与迷惘，
-        但希望能够一起面对，一起解决，一起享受。
-        希望我们能够一直在一起，一起生活，一起学习，一起生活。
+        和春春一起的生活很快樂，超級超級愛春春。
+        可能生活會有很多很多的限制與迷惘，
+        但希望能夠一起面對，一起解決，一起享受。
+        希望我們能夠壹直在一起，一起生活，一起學習，一起生活。
       </div>
 
       <div
@@ -70,9 +78,20 @@ export default function Life() {
             className="pointer-events-none select-none"
           >
 
-            <Dialog.Root>
+            <MyImage
+              className="
+                pointer-events-auto
+                select-none
+                object-contain
+                h-120px
+                bg-[#00000040]
+              "
+              src={image}
+            />
+
+            {/* <Dialog.Root>
               <Dialog.Trigger>
-                <img
+                <MyImage
                   className="
                     pointer-events-auto
                     select-none
@@ -89,7 +108,7 @@ export default function Life() {
                   src={image}
                 />
               </Dialog.Content>
-            </Dialog.Root>
+            </Dialog.Root> */}
 
           </div>
         ))}

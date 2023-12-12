@@ -21,5 +21,6 @@
     // 添加 React 补全
     "javascript": "javascriptreact",
     "typescript": "typescriptreact"
-  }
+  },
+  "workbench.tree.enableStickyScroll": true
 }
