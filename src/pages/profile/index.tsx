@@ -150,7 +150,12 @@ export default function Life() {
         </div>
       </div>
 
-      <div className="flex flex-col skew-y-[-4deg] mt-30px mb-60px -ml-10%">
+      <div
+        className="flex flex-col skew-y-[-4deg] mt-30px mb-60px -ml-10%"
+        style={{
+          animation: 'squiggly-anim-a 0.8s infinite',
+        }}
+      >
         {
           OUR_TAGS.map((row, index) => (
             <InteractiveMarquee
