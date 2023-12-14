@@ -1,0 +1,1 @@
+for %%F in (*.jpg) do ffmpeg -i "%%F" -vf scale=640:-1 -quality 80 "outputs\%%F"

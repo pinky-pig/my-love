@@ -92,7 +92,7 @@ export default function Life() {
               y2="1"
               style={{
                 fill: 'none',
-                stroke: '#000',
+                stroke: '#3E4857',
                 strokeWidth: '2',
                 strokeLinecap: 'round',
                 strokeMiterlimit: '10',
