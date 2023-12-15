@@ -4,6 +4,7 @@ import { InteractiveMarquee } from '~/components/ui/Marquee'
 import { OUR_TAGS, pageColor, staticAPI } from '~/config/params'
 import MechanicalLove from '~/assets/svg/mechanicalLove.svg'
 import Experiments from '~/assets/svg/experiments.svg'
+import TransitionMask from '~/assets/img/transition-mask.png'
 
 export default function Life() {
   const images = Array(3).fill(0).map((item, index) => {
@@ -47,10 +48,16 @@ export default function Life() {
       </h1>
 
       {/* 内容 */}
+
       <div
         className="font-400 tracking-1px max-w-500px w-80vw leading-10 mb-8vw"
         style={{
           fontSize: 'calc(1rem + 0.3vw)',
+          WebkitMask: `url(${TransitionMask}) top left`,
+          WebkitMaskSize: '3400% 100%',
+          animation: 'mask-play 2s steps(33) forwards',
+          transform: 'translateX(-10%)',
+          opacity: '1',
         }}
       >
         <img
