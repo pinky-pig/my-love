@@ -19,7 +19,6 @@ export default function Life() {
         box-border
         text-[#3E4857]
         px-8.333vw
-        touch-none
       '
       style={{ background: pageColor.profile }}
     >
