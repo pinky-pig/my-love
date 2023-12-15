@@ -53,7 +53,7 @@ export default function Life() {
         }}
       >
         <img
-          className="w-200px bg-transparent object-cover rounded-0.66em"
+          className="w-30vw max-w-200px bg-transparent object-cover rounded-0.66em"
           style={{
             // boxShadow: '-3px 3px 0 0 #3e4857',
             // border: '0.15em solid #3e4857',
@@ -140,7 +140,7 @@ export default function Life() {
 
         <div>
           <img
-            className="w-200px bg-transparent object-cover rounded-0.66em"
+            className="w-30vw max-w-200px bg-transparent object-cover rounded-0.66em"
             style={{
               animation: 'squiggly-anim-a 0.8s infinite',
             }}
