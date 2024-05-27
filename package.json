@@ -1,12 +1,15 @@
 {
   "name": "my-love",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite --port 1213 --open --host",
     "dev-refresh": "cross-env USE_REFRESH=true vite",
     "build": "vite build",
     "lint": "eslint .",
+    "prettier": "prettier --write .",
     "build-refresh": "cross-env USE_REFRESH=true vite build",
+    "up": "taze major -I",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -28,7 +31,10 @@
     "zustand": "^4.4.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.8",
+    "@arvinn/eslint-config": "^0.0.4",
+    "@arvinn/prettier-config": "^0.0.1",
+    "@eslint/compat": "^1.0.1",
+    "@eslint/js": "^9.3.0",
     "@types/node": "^20.8.3",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
@@ -38,15 +44,21 @@
     "@unocss/preset-icons": "latest",
     "@vitejs/plugin-react": "^4.1.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.45.0",
+    "eslint": "^9.3.0",
+    "eslint-plugin-react": "^7.34.1",
+    "globals": "^15.3.0",
     "pixi.js": "^7.3.2",
+    "prettier": "^3.2.5",
     "react-lazy-load-image-component": "^1.6.0",
+    "taze": "^0.13.8",
     "typescript": "^5.2.2",
+    "typescript-eslint": "^7.10.0",
     "unocss": "latest",
     "vite": "^4.4.9"
   },
   "stackblitz": {
     "installDependencies": false,
     "startCommand": "node .stackblitz.mjs && npm install && npm run dev"
-  }
+  },
+  "prettier": "@arvinn/prettier-config"
 }

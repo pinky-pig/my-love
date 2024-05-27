@@ -2,8 +2,7 @@ import React from 'react'
 
 export default function SpotifyEmbed() {
   return (
-
-    <div className="relative w-260px h-153px left-0 z-99 " >
+    <div className="relative w-260px h-153px left-0 z-99 ">
       <iframe
         style={{
           borderRadius: '12px',
@@ -15,8 +14,7 @@ export default function SpotifyEmbed() {
         allowFullScreen
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
-      >
-      </iframe>
+      ></iframe>
     </div>
   )
 }

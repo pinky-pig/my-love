@@ -8,11 +8,10 @@ interface IBackgroundType {
 export interface BackgroundRef {
   clearCanvas: () => void
 }
-function Background({
-  backgroundColor = '#F3EDDC',
-  fillColor = '#BBD6AA90',
-}: IBackgroundType,
-ref: React.Ref<BackgroundRef>) {
+function Background(
+  { backgroundColor = '#F3EDDC', fillColor = '#BBD6AA90' }: IBackgroundType,
+  ref: React.Ref<BackgroundRef>,
+) {
   // 设置最小距离阈值
   const minDistanceThreshold = 20
   const radius = 200
@@ -45,23 +44,21 @@ ref: React.Ref<BackgroundRef>) {
         const currentPosition = { x: p5.mouseX, y: p5.mouseY }
 
         if (
-          prevMousePositions.x === 0
-          && prevMousePositions.y === 0
-          && currentPosition.x === 0
-          && currentPosition.y === 0
+          prevMousePositions.x === 0 &&
+          prevMousePositions.y === 0 &&
+          currentPosition.x === 0 &&
+          currentPosition.y === 0
         ) {
           // 因为在 P5.js 中， draw 会默认走的， prevMousePositions 会默认是 0,0
           return
-        }
-        else if (
-          prevMousePositions.x === 0
-          && prevMousePositions.y === 0
-          && currentPosition.x !== 0
-          && currentPosition.y !== 0
+        } else if (
+          prevMousePositions.x === 0 &&
+          prevMousePositions.y === 0 &&
+          currentPosition.x !== 0 &&
+          currentPosition.y !== 0
         ) {
           p5.ellipse(p5.mouseX, p5.mouseY, radius, radius)
-        }
-        else {
+        } else {
           const p1 = prevMousePositions
           const p2 = currentPosition
           // 1. 计算两点之间的距离
@@ -75,8 +72,7 @@ ref: React.Ref<BackgroundRef>) {
               const y = p5.lerp(p1.y, p2.y, j / steps)
               p5.ellipse(x, y, radius, radius)
             }
-          }
-          else {
+          } else {
             p5.ellipse(p5.mouseX, p5.mouseY, radius, radius)
           }
         }

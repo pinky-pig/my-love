@@ -1,8 +1,0 @@
-{
-  "extends": [
-    "@antfu"
-  ],
-  "rules": {
-    "new-cap": "off" // p5.js 构造类小写
-  }
-}

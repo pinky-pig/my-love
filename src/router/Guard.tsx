@@ -10,25 +10,15 @@ interface GuardProps {
 export default function Guard({ path, children }: GuardProps): React.ReactNode {
   // Map 页面特殊处理
   if (path !== '/map') {
-    return (
-      <React.Suspense fallback={<Loading />}>
-        {children}
-      </React.Suspense>
-    )
-  }
-  else {
+    return <React.Suspense fallback={<Loading />}>{children}</React.Suspense>
+  } else {
     let propmise = null
-    if (window.AMap)
-      propmise = new Promise(resolve => resolve('loaded'))
-    else
-      propmise = setupGdMap()
+    if (window.AMap) propmise = new Promise((resolve) => resolve('loaded'))
+    else propmise = setupGdMap()
 
     return (
       <React.Suspense fallback={<Loading />}>
-
-        <Await resolve={propmise} >
-          {children}
-        </Await>
+        <Await resolve={propmise}>{children}</Await>
       </React.Suspense>
     )
   }

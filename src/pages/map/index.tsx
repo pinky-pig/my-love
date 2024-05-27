@@ -2,13 +2,12 @@ import React from 'react'
 
 import gsap from 'gsap'
 import { MotionPathPlugin } from 'gsap/all'
-import styles from './index.module.css'
-import type { IImagePanelExposeType } from './ImagePanel'
-import ImagePanel from './ImagePanel'
 import GdMap from '~/components/ui/GdMap'
 import { pageColor } from '~/config/params'
 import { Locations } from '~/config/gdMap'
 import ParabolicSVG from '~/components/ui/ParabolicSVG'
+import ImagePanel, { type IImagePanelExposeType } from './ImagePanel'
+import styles from './index.module.css'
 
 export default function Map() {
   function mapOnload(map: any) {
@@ -50,9 +49,9 @@ export default function Map() {
    * @returns 如果 id 为 null，不做运动，否则就运动
    */
   function startGSAPAnimation(targetId: string | null) {
-    if (!targetId)
-      return
+    if (!targetId) return
     // 此处执行GSAP动画
+    // eslint-disable-next-line unicorn/prefer-query-selector
     const movingDiv = document.getElementById(targetId)
     if (movingDiv) {
       const cloneDom = movingDiv.cloneNode(true) as HTMLElement
@@ -62,7 +61,7 @@ export default function Map() {
       cloneDom.style.zIndex = '9'
       cloneDom.style.willChange = 'transform'
       cloneDom.setAttribute('id', 'cloneNode')
-      document.getElementById('App')?.append(cloneDom)
+      document.querySelector('#App')?.append(cloneDom)
       const tl = gsap.timeline({ repeat: 0 })
       tl.to(cloneDom, {
         duration: 0.4,
@@ -73,8 +72,9 @@ export default function Map() {
         },
         // ease: 'cubic-bezier(0,1.57,.28,1.07)',
         ease: 'linear',
-        onComplete(e) {
-          document.getElementById('App')?.removeChild(cloneDom)
+        onComplete() {
+          // eslint-disable-next-line unicorn/prefer-dom-node-remove
+          document.querySelector('#App')?.removeChild(cloneDom)
 
           ImagePanelRef.current?.show()
         },
@@ -96,7 +96,9 @@ export default function Map() {
     cities.forEach((item) => {
       // fetch(AliyunGEODataVUrl + item.code)
       fetch(`/city-json/${item.code}.json`)
-        .then((response) => { return response.json() })
+        .then((response) => {
+          return response.json()
+        })
         .then((city) => {
           initPolygonAndMarker(city, map, item)
         })
@@ -109,11 +111,16 @@ export default function Map() {
    * @param map 高德地图
    * @param city 自定义的city property
    */
-  function initPolygonAndMarker(json: any, map: any, city: typeof Locations[number]) {
+  function initPolygonAndMarker(
+    json: any,
+    map: any,
+    city: (typeof Locations)[number],
+  ) {
     const AMap = window.AMap
     const geojson = new AMap.GeoJSON({
       geoJSON: json,
       getPolygon(geojson: any, lnglats: any) {
+        // eslint-disable-next-line unused-imports/no-unused-vars
         const area = AMap.GeometryUtil.ringArea(lnglats[0])
         const polygon = new AMap.Polygon({
           path: lnglats,
@@ -177,24 +184,18 @@ export default function Map() {
 
   return (
     <div
-      className='w-screen h-screen overflow-hidden flex flex-col justify-center items-center box-border'
+      className="box-border h-screen w-screen flex flex-col items-center justify-center overflow-hidden"
       style={{ background: pageColor.map }}
     >
-
       {/* 抛物线 */}
       <ParabolicSVG
         coords={parabolicCoords}
-        startGSAPAnimation={
-          () => startGSAPAnimation(targetIdRef.current)
-        }
+        startGSAPAnimation={() => startGSAPAnimation(targetIdRef.current)}
       />
 
       {/* 地图 */}
-      <div className="md:w-70vw md:h-[calc(100%_-_9rem)] md:rounded-15px rounded-none w-screen h-screen z-1 relative overflow-hidden ">
-        <GdMap
-          className="rounded-20px overflow-hidden"
-          onload={mapOnload}
-        />
+      <div className="relative z-1 h-screen w-screen overflow-hidden rounded-none md:h-[calc(100%_-_9rem)] md:w-70vw md:rounded-15px">
+        <GdMap className="overflow-hidden rounded-20px" onload={mapOnload} />
 
         {/* border 样式 */}
         <div className={styles.scratchyBorder}>
@@ -212,12 +213,10 @@ export default function Map() {
       </div>
 
       {/* 图片列表 */}
-      <ImagePanel
-        ref={ImagePanelRef}
-      />
+      <ImagePanel ref={ImagePanelRef} />
 
       {/* title and close */}
-      <div className="absolute top-36 left-36 flex flex-col w-14 items-start gap-4 z-9">
+      <div className="absolute left-36 top-36 z-9 w-14 flex flex-col items-start gap-4">
         {/* <EarthEmoji
           className="text-14 pointer-events-auto cursor-pointer "
           onClick={(e) => {
@@ -228,7 +227,6 @@ export default function Map() {
           留下的足迹
         </div> */}
       </div>
-
     </div>
   )
 }

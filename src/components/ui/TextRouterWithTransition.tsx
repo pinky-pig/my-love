@@ -1,7 +1,11 @@
 import { flushSync } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 
-export default function TextRouterWithTransition({ to, children, className }: any) {
+export default function TextRouterWithTransition({
+  to,
+  children,
+  className,
+}: any) {
   const navigate = useNavigate()
   return (
     <a

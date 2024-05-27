@@ -7,24 +7,19 @@ import Experiments from '~/assets/svg/experiments.svg'
 import TransitionMask from '~/assets/img/transition-mask.png'
 
 export default function Life() {
-  const images = Array(3).fill(0).map((item, index) => {
-    return `${staticAPI}/结婚照%20(${index + 1}).jpg`
-  })
+  const images = Array.from({ length: 3 })
+    .fill(0)
+    .map((item, index) => {
+      return `${staticAPI}/结婚照%20(${index + 1}).jpg`
+    })
 
   return (
     <div
-      className='
-        w-screen h-screen overflow-y-auto overflow-x-hidden
-        px-10px py-8dvh
-        box-border
-        text-[#3E4857]
-        px-8.333vw
-      '
+      className="box-border h-screen w-screen overflow-x-hidden overflow-y-auto px-10px px-8.333vw py-8dvh text-[#3E4857]"
       style={{ background: pageColor.profile }}
     >
-
       {/* 副标题 */}
-      <div className="flex flex-row w-full">
+      <div className="w-full flex flex-row">
         <div
           className="transition-text font-600 tracking-1px"
           style={{ fontSize: 'calc(1rem + 0.3vw)' }}
@@ -35,7 +30,7 @@ export default function Life() {
 
       {/* 标题 */}
       <h1
-        className="font-800 mb-3.5vw"
+        className="mb-3.5vw font-800"
         style={{
           fontSize: 'calc(calc(1rem + 0.3vw)*3.2)',
           letterSpacing: 'calc(calc(1rem + 0.3vw)*0.4)',
@@ -49,7 +44,7 @@ export default function Life() {
       {/* 内容 */}
 
       <div
-        className="font-400 tracking-1px max-w-500px w-80vw leading-10 mb-8vw"
+        className="mb-8vw max-w-500px w-80vw font-400 leading-10 tracking-1px"
         style={{
           fontSize: 'calc(1rem + 0.3vw)',
           WebkitMask: `url(${TransitionMask}) top left`,
@@ -60,7 +55,7 @@ export default function Life() {
         }}
       >
         <img
-          className="w-30vw max-w-200px bg-transparent object-cover rounded-0.66em"
+          className="max-w-200px w-30vw rounded-0.66em bg-transparent object-cover"
           style={{
             // boxShadow: '-3px 3px 0 0 #3e4857',
             // border: '0.15em solid #3e4857',
@@ -71,29 +66,13 @@ export default function Life() {
         />
       </div>
 
-      <div
-        className="
-          w-full px-4vw pb-8dvh overflow-hidden box-border
-          flex flex-row flex-wrap justify-center gap-10px
-          cursor-pointer relative
-        "
-      >
-        {images.map((image, index) => (
-          <div
-            key={image}
-            className="pointer-events-none select-none"
-          >
-
+      <div className="relative box-border w-full flex flex-row flex-wrap cursor-pointer justify-center gap-10px overflow-hidden px-4vw pb-8dvh">
+        {images.map((image) => (
+          <div key={image} className="pointer-events-none select-none">
             <Dialog.Root>
               <Dialog.Trigger>
                 <img
-                  className="
-                    pointer-events-auto
-                    select-none
-                    object-contain
-                    h-24vw
-                    bg-[#00000040]
-                  "
+                  className="pointer-events-auto h-24vw select-none bg-[#00000040] object-contain"
                   src={image}
                 />
               </Dialog.Trigger>
@@ -107,24 +86,15 @@ export default function Life() {
                   backdropFilter: 'blur(10px)',
                 }}
               >
-                <img
-                  className="w-full h-full object-contain"
-                  src={image}
-                />
+                <img className="h-full w-full object-contain" src={image} />
               </Dialog.Content>
             </Dialog.Root>
-
           </div>
         ))}
 
-        <div className="absolute w-full bottom-10 left-0 text-center skew-y-[-4deg]">
+        <div className="absolute bottom-10 left-0 w-full skew-y-[-4deg] text-center">
           <span
-            className="
-              bg-white bg-opacity-60
-              text-[#3e4857] font-800
-              px-3vw py-2
-              animate-[squiggly-anim-a_0.8s_infinite]
-            "
+            className="animate-[squiggly-anim-a_0.8s_infinite] bg-white bg-opacity-60 px-3vw py-2 font-800 text-[#3e4857]"
             style={{
               fontSize: 'calc(calc(14px + 0.2vw)*1.75)',
             }}
@@ -134,7 +104,7 @@ export default function Life() {
         </div>
       </div>
 
-      <div className="flex justify-between mt-20px mb-40px">
+      <div className="mb-40px mt-20px flex justify-between">
         <span
           style={{
             fontSize: 'calc(calc(16px + 0.2vw)*1.4)',
@@ -147,7 +117,7 @@ export default function Life() {
 
         <div>
           <img
-            className="w-30vw max-w-200px bg-transparent object-cover rounded-0.66em"
+            className="max-w-200px w-30vw rounded-0.66em bg-transparent object-cover"
             style={{
               animation: 'squiggly-anim-a 0.8s infinite',
             }}
@@ -158,39 +128,34 @@ export default function Life() {
       </div>
 
       <div
-        className="flex flex-col skew-y-[-4deg] mt-30px mb-60px -ml-10%"
+        className="mb-60px mt-30px flex flex-col skew-y-[-4deg] -ml-10%"
         style={{
           animation: 'squiggly-anim-a 0.8s infinite',
         }}
       >
-        {
-          OUR_TAGS.map((row, index) => (
-            <InteractiveMarquee
-              key={index}
-              speed={[1, 1.46, 1.618][index % 3]}
-              className="flex flex-row w-max h-full items-center z-1"
-            >
-              {
-                row.map(item => (
-                  <div
-                    key={item}
-                    draggable="false"
-                    className="flex-shrink-0 flex-grow-0 font-800 text-transparent"
-                    style={{
-                      fontSize: 'calc(calc(16px + 0.2vw)*2.4)',
-                      WebkitTextStroke: '1px #3e4857',
-                      margin: '0 calc(calc(14px + 0.2vw)*1.2)',
-                    }}
-                  >
-                    {item}
-                  </div>
-                ))
-              }
-            </InteractiveMarquee>
-          ))
-        }
+        {OUR_TAGS.map((row, index) => (
+          <InteractiveMarquee
+            key={index}
+            speed={[1, 1.46, 1.618][index % 3]}
+            className="z-1 h-full w-max flex flex-row items-center"
+          >
+            {row.map((item) => (
+              <div
+                key={item}
+                draggable="false"
+                className="flex-shrink-0 flex-grow-0 font-800 text-transparent"
+                style={{
+                  fontSize: 'calc(calc(16px + 0.2vw)*2.4)',
+                  WebkitTextStroke: '1px #3e4857',
+                  margin: '0 calc(calc(14px + 0.2vw)*1.2)',
+                }}
+              >
+                {item}
+              </div>
+            ))}
+          </InteractiveMarquee>
+        ))}
       </div>
-
     </div>
   )
 }

@@ -55,8 +55,7 @@ export default React.memo(() => {
       pointer.y = event.clientY
 
       // 重置计时器
-      if (mouseTimer)
-        clearTimeout(mouseTimer)
+      if (mouseTimer) clearTimeout(mouseTimer)
 
       // 设置计时器，如果鼠标停止移动超过500毫秒，将拖尾颜色隐藏
       mouseTimer = setTimeout(() => {
@@ -67,14 +66,18 @@ export default React.memo(() => {
     window.addEventListener('pointermove', handleMouseMove)
 
     function setLineTransparent() {
-      const doms = window.document.querySelectorAll('.gsap-tail-line') as NodeListOf<HTMLElement>
+      const doms = window.document.querySelectorAll(
+        '.gsap-tail-line',
+      ) as NodeListOf<HTMLElement>
       doms.forEach((line) => {
         line.style.stroke = 'transparent' // 鼠标停止移动时设置为透明
       })
     }
 
     function setLineWhite() {
-      const doms = window.document.querySelectorAll('.gsap-tail-line') as NodeListOf<HTMLElement>
+      const doms = window.document.querySelectorAll(
+        '.gsap-tail-line',
+      ) as NodeListOf<HTMLElement>
       doms.forEach((line) => {
         line.style.stroke = stroke // 鼠标停止移动时设置为透明
       })
@@ -93,9 +96,15 @@ export default React.memo(() => {
     }
 
     // 创建线条的函数
-    function createLine(leader: { (prop: any): number; (arg0: string): any }, i: number) {
+    function createLine(
+      leader: { (prop: any): number; (arg0: string): any },
+      i: number,
+    ) {
       // 创建 <line />
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+      const line = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'line',
+      )
 
       // 设置样式
       line.style.strokeWidth = size
@@ -120,16 +129,14 @@ export default React.memo(() => {
         repeat: -1, // 这个选项指示动画应该无限重复播放。
         ease: 'expo.inOut', // 缓动函数，缓慢进入和退出的缓动效果
         modifiers: {
-
           // 这里增加一个判断，就是当前一个坐标是在设置的原点的时候，不走动画。从最新点开始动画
           // 这里经过 debugger 得知，先走 y ， 再走 x
           x: () => {
             if (pos('x') === origin.x && leader('x') !== origin.x) {
               line.setAttribute('x2', `${leader('x')}`)
               return leader('x')
-            }
-            else {
-            // 获取 x 的位置（上一个位置）
+            } else {
+              // 获取 x 的位置（上一个位置）
               const posX = pos('x')
 
               // 获取鼠标的 x 的位置（当前位置）。这里 gsap 监听了 leader:pointer 的位置，发生更新就会触发运动
@@ -146,11 +153,14 @@ export default React.memo(() => {
             }
           },
           y: () => {
-            if (pos('x') === origin.x && pos('y') === origin.y && leader('y') !== origin.y) {
+            if (
+              pos('x') === origin.x &&
+              pos('y') === origin.y &&
+              leader('y') !== origin.y
+            ) {
               line.setAttribute('y2', `${leader('y')}`)
               return leader('y')
-            }
-            else {
+            } else {
               const posY = pos('y')
               const leaderY = leader('y')
               const y = posY + (leaderY - posY) * ease
@@ -166,31 +176,22 @@ export default React.memo(() => {
   }, [])
 
   return (
-    <div
-      className="fixed top-0 left-0 bottom-0 right-0 w-full h-full pointer-events-none z-99"
-    >
+    <div className="fixed top-0 left-0 bottom-0 right-0 w-full h-full pointer-events-none z-99">
       {/* 拖尾 */}
-      <svg
-        ref={svgRef}
-        className="absolute top-0 left-0 w-full h-full"
-      />
+      <svg ref={svgRef} className="absolute top-0 left-0 w-full h-full" />
 
       {/* cursor */}
-      {
-        !Number.isNaN(clientX)
-        && !Number.isNaN(clientY)
-        && (
-          <div
-            style={{
-              transform: `translate(calc(-50% + ${clientX}px), calc(-50% + ${clientY}px))`,
-              willChange: 'transform',
-              width: `${size}px`,
-              height: `${size}px`,
-            }}
-            className="pointer-events-none rounded-full bg-transparent absolute top-0 left-0 border-2 border-white border-solid"
-          />
-        )
-      }
+      {!Number.isNaN(clientX) && !Number.isNaN(clientY) && (
+        <div
+          style={{
+            transform: `translate(calc(-50% + ${clientX}px), calc(-50% + ${clientY}px))`,
+            willChange: 'transform',
+            width: `${size}px`,
+            height: `${size}px`,
+          }}
+          className="pointer-events-none rounded-full bg-transparent absolute top-0 left-0 border-2 border-white border-solid"
+        />
+      )}
     </div>
   )
 })

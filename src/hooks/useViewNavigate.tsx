@@ -23,8 +23,7 @@ export function viewNavigate(
   // @ts-expect-error: Transition API
   if (!document.startViewTransition) {
     return navigate(to, { ...options })
-  }
-  else {
+  } else {
     if (!expandTransition) {
       // @ts-expect-error: Transition API
       document.startViewTransition(() => {
@@ -54,36 +53,35 @@ export function viewNavigate(
       })
     })
 
-    transition.ready
-      .then(() => {
-        const root = document.documentElement
-        root.style.background = expandTransition?.color || '#BBD5AA'
+    transition.ready.then(() => {
+      const root = document.documentElement
+      root.style.background = expandTransition?.color || '#BBD5AA'
 
-        handleTransition()
-        function handleTransition() {
-          const clipPath = [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${endRadius}px at ${x}px ${y}px)`,
-          ]
-          const animation = root.animate(
-            {
-              clipPath: isShrink ? [...clipPath].reverse() : clipPath,
-            },
-            {
-              duration: expandTransition?.duration || 400,
-              easing: 'ease-in-out',
-              pseudoElement: isShrink
-                ? '::view-transition-old(root)'
-                : '::view-transition-new(root)',
-            },
-          )
+      handleTransition()
+      function handleTransition() {
+        const clipPath = [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${endRadius}px at ${x}px ${y}px)`,
+        ]
+        const animation = root.animate(
+          {
+            clipPath: isShrink ? [...clipPath].reverse() : clipPath,
+          },
+          {
+            duration: expandTransition?.duration || 400,
+            easing: 'ease-in-out',
+            pseudoElement: isShrink
+              ? '::view-transition-old(root)'
+              : '::view-transition-new(root)',
+          },
+        )
 
-          animation.onfinish = () => {
-            // 在动画完成时执行你的代码
-            root.classList.remove('expand-transition')
-            root.classList.remove('shrink-transition')
-          }
+        animation.onfinish = () => {
+          // 在动画完成时执行你的代码
+          root.classList.remove('expand-transition')
+          root.classList.remove('shrink-transition')
         }
-      })
+      }
+    })
   }
 }

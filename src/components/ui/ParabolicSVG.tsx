@@ -4,11 +4,19 @@ interface IParabolicSVGType {
   coords: number[]
   startGSAPAnimation: () => void
 }
-export default function ParabolicSVG({ coords, startGSAPAnimation }: IParabolicSVGType) {
+export default function ParabolicSVG({
+  coords,
+  startGSAPAnimation,
+}: IParabolicSVGType) {
   const [path, setPath] = React.useState('M 0 0')
 
   React.useEffect(() => {
-    const svgPathString = createParabolicPath(30, window.innerHeight - 30, coords[0] || 0, coords[1] || 0)
+    const svgPathString = createParabolicPath(
+      30,
+      window.innerHeight - 30,
+      coords[0] || 0,
+      coords[1] || 0,
+    )
     setPath(svgPathString)
   }, [coords])
 
@@ -17,7 +25,10 @@ export default function ParabolicSVG({ coords, startGSAPAnimation }: IParabolicS
   }, [path])
 
   return (
-    <svg className="w-full h-full fixed z-9 translate-z-0 box-border pointer-events-none" viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`}>
+    <svg
+      className="w-full h-full fixed z-9 translate-z-0 box-border pointer-events-none"
+      viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`}
+    >
       <path
         id="parabolicPath"
         fill="none"
@@ -30,8 +41,7 @@ export default function ParabolicSVG({ coords, startGSAPAnimation }: IParabolicS
 }
 
 function createParabolicPath(x1: number, y1: number, x2: number, y2: number) {
-  if (x2 === 0 && y2 === 0)
-    return 'M 0 0 Z'
+  if (x2 === 0 && y2 === 0) return 'M 0 0 Z'
 
   const cv = 0.3
   // 计算控制点的坐标

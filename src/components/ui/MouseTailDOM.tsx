@@ -10,15 +10,13 @@ export default function MouseTailDOM() {
     if (!Number.isNaN(clientX) && !Number.isNaN(clientY)) {
       if (points.length === 0) {
         setPoints([...points, [clientX, clientY]])
-      }
-      else {
+      } else {
         const result = []
         const start = points[points.length - 1]
         const end = [clientX, clientY]
         // 1. 计算两点之间的距离
         const d = Math.sqrt(
-          Math.abs(end[0] - start[0]) ** 2
-          + Math.abs(end[1] - start[1]) ** 2,
+          Math.abs(end[0] - start[0]) ** 2 + Math.abs(end[1] - start[1]) ** 2,
         )
         if (d > 10) {
           // 2. 调整步数以控制插值的密度
@@ -56,8 +54,7 @@ export default function MouseTailDOM() {
           temp.splice(0, Math.ceil(points.length * 0.1))
           timestamp = now
           return temp
-        }
-        else {
+        } else {
           return points
         }
       })
@@ -72,19 +69,20 @@ export default function MouseTailDOM() {
 
   return (
     <div className="fixed top-0 left-0 bottom-0 right-0 w-full h-full pointer-events-none">
-      {
-        points.map((point, index) => (
-          <div
-            key={index}
-            style={{
-              transform: ` translate( calc(-50% + ${point[0]}px), calc(-50% + ${point[1]}px) ) `,
-              willChange: 'transform',
-              background: index > points.length - 5 ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.1)',
-            }}
-            className="pointer-events-none  -translate-1/2 w-160px h-160px rounded-full absolute top-0 left-0 "
-          />
-        ))
-      }
+      {points.map((point, index) => (
+        <div
+          key={index}
+          style={{
+            transform: ` translate( calc(-50% + ${point[0]}px), calc(-50% + ${point[1]}px) ) `,
+            willChange: 'transform',
+            background:
+              index > points.length - 5
+                ? 'rgba(255, 255, 255, 0.05)'
+                : 'rgba(255, 255, 255, 0.1)',
+          }}
+          className="pointer-events-none  -translate-1/2 w-160px h-160px rounded-full absolute top-0 left-0 "
+        />
+      ))}
 
       <div
         style={{

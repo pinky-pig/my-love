@@ -21,8 +21,10 @@ export function Two(
   const { setEnableTransitionText } = useGlobalStore()
 
   return (
-    <div ref={ref} className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 md:max-w-70vw max-w-full">
-
+    <div
+      ref={ref}
+      className=" font-semibold text-[#3E4857] text-6 select-none gap-12 tracking-2 leading-14 md:max-w-70vw max-w-full"
+    >
       <div
         className="transition-text inline-block cursor-pointer mr-4px md:text-16 text-10 text-[#F3EDDC] hover:!text-shadow-md hover:!scale-110"
         style={{
@@ -35,15 +37,16 @@ export function Two(
         }}
         onClick={(e) => {
           setEnableTransitionText(['.transition-text'])
-          viewNavigate(navigate, '/profile', e, { type: 'expand', color: ThemePalettes.pink })
+          viewNavigate(navigate, '/profile', e, {
+            type: 'expand',
+            color: ThemePalettes.pink,
+          })
         }}
       >
         我們
       </div>
 
-      <span className="inline">
-        戀愛
-      </span>
+      <span className="inline">戀愛</span>
 
       <div
         className="transition-text-timeline inline-block md:text-14 text-8 text-transparent hover:!scale-110 cursor-pointer"
@@ -56,21 +59,20 @@ export function Two(
         }}
         onClick={(e) => {
           setEnableTransitionText(['.transition-text-timeline'])
-          viewNavigate(navigate, '/timeline', e, { type: 'expand', color: ThemePalettes.purple })
+          viewNavigate(navigate, '/timeline', e, {
+            type: 'expand',
+            color: ThemePalettes.purple,
+          })
         }}
       >
         {daysDiff}
       </div>
 
-      <span className="inline">
-        天了。
-      </span>
+      <span className="inline">天了。</span>
 
       <br />
 
-      <span className="inline">
-        從大一到如今，從相識到成家
-      </span>
+      <span className="inline">從大一到如今，從相識到成家</span>
 
       <span
         className="inline-block relative hover:!scale-130 cursor-pointer "
@@ -79,12 +81,14 @@ export function Two(
         }}
         onClick={(e) => {
           setEnableTransitionText([])
-          viewNavigate(navigate, '/video', e, { type: 'expand', color: '#000000' })
+          viewNavigate(navigate, '/video', e, {
+            type: 'expand',
+            color: '#000000',
+          })
         }}
       >
         <TVEmoji className="absolute -top-35px left-0 text-5xl "></TVEmoji>
       </span>
-
     </div>
   )
 }

@@ -2,22 +2,18 @@ import VideoMask from '~/assets/img/video-mask.png'
 
 export default function Video() {
   return (
-    <div className='w-screen h-screen overflow-hidden bg-black grid place-items-center'>
-
-      <div className="w-80vw h-60vh">
-
+    <div className="grid h-screen w-screen place-items-center overflow-hidden bg-black">
+      <div className="h-60vh w-80vw">
         <video
           autoPlay
           controls
-          className="!w-full !h-full object-cover"
-          style={
-            { WebkitMask: `url(${VideoMask}) no-repeat center center/100% 100%` }
-          }
-          src='/videos/打跳.mp4'
+          className="object-cover !h-full !w-full"
+          style={{
+            WebkitMask: `url(${VideoMask}) no-repeat center center/100% 100%`,
+          }}
+          src="/videos/打跳.mp4"
         />
-
       </div>
-
     </div>
   )
 }

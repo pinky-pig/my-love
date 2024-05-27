@@ -9,13 +9,14 @@ interface GlobalState {
 // partialize 过滤属性，存储哪些字段到localStorage
 const useGlobalStore = create<GlobalState>()(
   persist(
-    set => ({
+    (set) => ({
       enableTransitionText: [],
-      setEnableTransitionText: enable => set(() => ({ enableTransitionText: enable })),
+      setEnableTransitionText: (enable) =>
+        set(() => ({ enableTransitionText: enable })),
     }),
     {
       name: 'enableTransitionText',
-      partialize: state =>
+      partialize: (state) =>
         Object.fromEntries(
           Object.entries(state).filter(([key]) =>
             ['enableTransitionText'].includes(key),

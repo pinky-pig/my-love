@@ -13,9 +13,7 @@ export default function MouseTail() {
   React.useEffect(() => {
     // eslint-disable-next-line no-empty
     if (Number.isNaN(clientX) || Number.isNaN(clientY)) {
-
-    }
-    else {
+    } else {
       pointsRef.current = [...pointsRef.current, [clientX, clientY, 0.5]]
     }
   }, [clientX, clientY])
@@ -44,15 +42,10 @@ export default function MouseTail() {
   return (
     <>
       <svg
-        id='mouseTail'
+        id="mouseTail"
         className="pointer-events-none fixed left-0 top-0 z-999 h-full w-full touch-none"
       >
-        <path
-          d={pathData}
-          stroke="#FFFFFF"
-          fill="#FFFFFF"
-          opacity={0.3}
-        />
+        <path d={pathData} stroke="#FFFFFF" fill="#FFFFFF" opacity={0.3} />
       </svg>
       <div
         style={{
@@ -66,8 +59,7 @@ export default function MouseTail() {
 }
 
 function getSvgPathFromStroke(stroke: any) {
-  if (!stroke.length)
-    return ''
+  if (!stroke.length) return ''
   const d = stroke.reduce(
     (acc: any[], [x0, y0]: any, i: number, arr: string | any[]) => {
       const [x1, y1] = arr[(i + 1) % arr.length]

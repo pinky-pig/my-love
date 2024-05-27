@@ -43,10 +43,8 @@ export default function GdMap({ onload, className, options }: GdMapProps) {
   return (
     <div
       ref={mapContainer}
-      id='mapContainer'
-      className={
-        `h-full w-full ${className}`
-      }
+      id="mapContainer"
+      className={`h-full w-full ${className}`}
     />
   )
 }

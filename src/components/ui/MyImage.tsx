@@ -7,15 +7,13 @@ export interface IImage {
   alt?: string
   className?: string
 }
-export default function MyImage(
-  props: IImage,
-) {
-  return <LazyLoadImage
-    alt={props.alt}
-    effect="blur"
-    className={
-      `${props.className}`
-    }
-    src={props.src}
-  />
+export default function MyImage(props: IImage) {
+  return (
+    <LazyLoadImage
+      alt={props.alt}
+      effect="blur"
+      className={`${props.className}`}
+      src={props.src}
+    />
+  )
 }

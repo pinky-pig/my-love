@@ -1,5 +1,4 @@
 import { useRoutes } from 'react-router-dom'
-import Guard from './Guard'
 import Home from '~/pages/home'
 import Map from '~/pages/map'
 import Video from '~/pages/video'
@@ -8,6 +7,7 @@ import Profile from '~/pages/profile'
 import Life from '~/pages/life'
 import Default from '~/layouts/Default'
 import Loading from '~/components/ui/Loading'
+import Guard from './Guard'
 
 // const Video = lazy(() => import('~/pages/video'))
 // const Timeline = lazy(() => import('~/pages/timeline'))

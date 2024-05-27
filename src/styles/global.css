@@ -52,7 +52,7 @@ code {
 } */
 
 /* 高德地图样式 */
-.amap-logo{
+.amap-logo {
   display: none;
   opacity: 0 !important;
 }
@@ -61,40 +61,39 @@ code {
 }
 
 ::selection {
-  background-color: #8E8FFA;
+  background-color: #8e8ffa;
   color: #fff;
 }
 
-
 /* 滚动条样式 */
-::-webkit-scrollbar{
-  width:6px;
-  height:6px;
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
   background-color: transparent;
   border-radius: 8px;
 }
-::-webkit-scrollbar-track-piece{
-  width:24px;
-  background-color:transparent;
+::-webkit-scrollbar-track-piece {
+  width: 24px;
+  background-color: transparent;
   border-radius: 8px;
 }
-::-webkit-scrollbar-thumb:vertical{
-  width:24px;
-  height:24px;
+::-webkit-scrollbar-thumb:vertical {
+  width: 24px;
+  height: 24px;
   background: #ffffff50;
   border-radius: 8px;
-  border: 1px solid var(--scrollbar-color); 
+  border: 1px solid var(--scrollbar-color);
 }
-::-webkit-scrollbar-thumb:horizontal{
-  width:24px;
-  height:24px;
+::-webkit-scrollbar-thumb:horizontal {
+  width: 24px;
+  height: 24px;
   background: #ffffff50;
   border-radius: 8px;
-  border: 1px solid var(--scrollbar-color); 
+  border: 1px solid var(--scrollbar-color);
 }
-::-webkit-scrollbar-button{
-  display:none;
+::-webkit-scrollbar-button {
+  display: none;
 }
-::-webkit-scrollbar-corner{
-  display:none;
+::-webkit-scrollbar-corner {
+  display: none;
 }

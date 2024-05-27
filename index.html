@@ -1,116 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <title>Arvin 我們</title>
-  <style type="text/css">
-    html,body {
-      margin: 0;
-      touch-action: none;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .cloak-container {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      top: 0px;
-      left: 0px;
-      display: grid;
-      place-items: center;
-      background: #F3EDDC;
-    }
-
-    .cloak-box {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-weight: 700;
-      color: white;
-      position: relative;
-      user-select: none;
-    }
-
-    .cloak-box-name {
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-    }
-
-    .cloak-box-text-heart {
-      font-size: 18px;
-      margin: auto;
-      animation: cloak-bounce 1s infinite;
-    }
-
-    .cloak-box-dec {
-      font-size: 2rem;
-      letter-spacing: 6px;
-    }
-
-    .cloak-box-mask {
-      background: #F3EDDC90;
-      width: 100%;
-      height: 3rem;
-      top: 0px;
-      left: 0px;
-      transform: skewY(8deg);
-      position: absolute;
-    }
-
-    @keyframes cloak-bounce {
-
-      0%,
-      100% {
-        transform: translateY(-20%);
-        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Arvin 我們</title>
+    <style type="text/css">
+      html,
+      body {
+        margin: 0;
+        touch-action: none;
       }
 
-      50% {
-        transform: translateY(0%);
-        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      p {
+        margin: 0;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div id="root">
+      .cloak-container {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        top: 0px;
+        left: 0px;
+        display: grid;
+        place-items: center;
+        background: #f3eddc;
+      }
 
-    <!-- cloak start -->
-    <div class="cloak-container">
-      <div class="cloak-box">
-        <span class="cloak-box-name">
-          <p> Arvin </p>
-          <p class="cloak-box-text-heart"> 💗 </p>
-          <p> Zoe </p>
-        </span>
-        <span class="cloak-box-dec">我們一起的生活</span>
-        <div class="cloak-box-mask" />
+      .cloak-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        color: white;
+        position: relative;
+        user-select: none;
+      }
+
+      .cloak-box-name {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+
+      .cloak-box-text-heart {
+        font-size: 18px;
+        margin: auto;
+        animation: cloak-bounce 1s infinite;
+      }
+
+      .cloak-box-dec {
+        font-size: 2rem;
+        letter-spacing: 6px;
+      }
+
+      .cloak-box-mask {
+        background: #f3eddc90;
+        width: 100%;
+        height: 3rem;
+        top: 0px;
+        left: 0px;
+        transform: skewY(8deg);
+        position: absolute;
+      }
+
+      @keyframes cloak-bounce {
+        0%,
+        100% {
+          transform: translateY(-20%);
+          animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+
+        50% {
+          transform: translateY(0%);
+          animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <!-- cloak start -->
+      <div class="cloak-container">
+        <div class="cloak-box">
+          <span class="cloak-box-name">
+            <p>Arvin</p>
+            <p class="cloak-box-text-heart">💗</p>
+            <p>Zoe</p>
+          </span>
+          <span class="cloak-box-dec">我們一起的生活</span>
+          <div class="cloak-box-mask" />
+        </div>
+
+        <svg
+          style="position: absolute"
+          viewBox="0 0 160 160"
+          width="160"
+          height="160"
+        >
+          <g transform=" matrix(0.866, -0.5, 0.25, 0.433, 80, 80)">
+            <path
+              d="M 0,70 A 65,70 0 0,0 65,0 5,5 0 0,1 75,0 75,70 0 0,1 0,70Z"
+              fill="#ffffff50"
+            >
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                from="360 0 0"
+                to="0 0 0"
+                dur="1s"
+                repeatCount="indefinite"
+              />
+            </path>
+          </g>
+        </svg>
       </div>
-
-      <svg style="position: absolute;" viewBox="0 0 160 160" width="160" height="160">
-        <g transform=" matrix(0.866, -0.5, 0.25, 0.433, 80, 80)">
-          <path d="M 0,70 A 65,70 0 0,0 65,0 5,5 0 0,1 75,0 75,70 0 0,1 0,70Z" fill="#ffffff50">
-            <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="1s" repeatCount="indefinite" />
-          </path>
-        </g>
-      </svg>
+      <!-- cloak end -->
     </div>
-    <!-- cloak end -->
-
-
-  </div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
-
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

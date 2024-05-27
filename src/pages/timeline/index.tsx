@@ -15,18 +15,11 @@ export default function Life() {
 
   return (
     <div
-      className='
-        w-screen h-screen overflow-y-auto overflow-x-hidden
-        px-10px py-3.5vw
-        box-border
-        text-[#3E4857]
-        px-8.333vw relative
-      '
+      className="relative box-border h-screen w-screen overflow-x-hidden overflow-y-auto px-10px px-8.333vw py-3.5vw text-[#3E4857]"
       style={{ background: pageColor.timeline }}
     >
-
       {/* 副标题 */}
-      <div className="flex flex-row w-full">
+      <div className="w-full flex flex-row">
         <div
           className="transition-text-timeline font-600 tracking-1px"
           style={{ fontSize: 'calc(1rem + 0.3vw)' }}
@@ -37,7 +30,7 @@ export default function Life() {
 
       {/* 标题 */}
       <h1
-        className="font-800 mb-3.5vw"
+        className="mb-3.5vw font-800"
         style={{
           fontSize: 'calc(calc(1rem + 0.3vw)*3.2)',
           letterSpacing: 'calc(calc(1rem + 0.3vw)*0.4)',
@@ -50,17 +43,9 @@ export default function Life() {
 
       {/* 侧边 */}
       <div className="absolute left-[2vw]">
+        <div className="mx-a h-3vw max-h-5 max-w-5 w-3vw border-2px border-[#3e4857] rounded-full border-solid bg-transparent" />
         <div
-          className="
-            w-3vw h-3vw max-w-5 max-h-5
-            border-2px border-solid border-[#3e4857] bg-transparent rounded-full
-            mx-a
-          "
-        />
-        <div
-          className="
-            mx-a
-          "
+          className="mx-a"
           style={{
             writingMode: 'vertical-lr',
             letterSpacing: '10px',
@@ -104,24 +89,17 @@ export default function Life() {
         </svg>
       </div>
 
-      <div
-        className="
-          w-full px-3vw pb-8dvh overflow-hidden box-border
-          flex flex-col flex-wrap justify-start gap-10px
-          cursor-pointer relative
-        "
-      >
-        {timelines.map((timeline, index) => (
+      <div className="relative box-border w-full flex flex-col flex-wrap cursor-pointer justify-start gap-10px overflow-hidden px-3vw pb-8dvh">
+        {timelines.map((timeline) => (
           <div
             key={timeline.title}
-            className="pointer-events-none select-none w-fit"
+            className="pointer-events-none w-fit select-none"
             style={{
               paddingBottom: '30px',
               marginBottom: '30px',
               borderBottom: '2px dashed rgb(72 69 69 / 25%)',
             }}
           >
-
             {/* date */}
             <div
               className="font-600 tracking-1px"
@@ -142,7 +120,7 @@ export default function Life() {
 
             {/* content */}
             <div
-              className="font-400 tracking-1px my-2"
+              className="my-2 font-400 tracking-1px"
               style={{ fontSize: 'calc(1rem + 0.2vw)' }}
             >
               {timeline.content}
@@ -150,26 +128,16 @@ export default function Life() {
 
             {/* image */}
             <div className="flex flex-row gap-10px">
-              {
-                timeline.images.map((image, index) => (
-                  <MyImage
-                    key={image.figcaption}
-                    className="
-                      pointer-events-auto
-                      select-none
-                      object-contain
-                      h-120px
-                      bg-[#00000040]
-                    "
-                    src={image.url}
-                  />
-                ))
-              }
+              {timeline.images.map((image) => (
+                <MyImage
+                  key={image.figcaption}
+                  className="pointer-events-auto h-120px select-none bg-[#00000040] object-contain"
+                  src={image.url}
+                />
+              ))}
             </div>
-
           </div>
         ))}
-
       </div>
 
       <Footer></Footer>

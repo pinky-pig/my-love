@@ -1,13 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import type {
-  MotionValue,
-  PanInfo,
-} from 'framer-motion'
-import {
-  motion,
-  useSpring,
-  useTransform,
-} from 'framer-motion'
+import type { MotionValue, PanInfo } from 'framer-motion'
+import { motion, useSpring, useTransform } from 'framer-motion'
 import normalizeWheel from 'normalize-wheel'
 import { useRafLoop } from 'react-use'
 import { useWindowSize } from '@react-hook/window-size'
@@ -32,16 +25,13 @@ const MarqueeItem: React.FC<MarqueeItemProps> = (props) => {
   const [width, height] = useWindowSize()
 
   const setX = () => {
-    if (!itemRef.current || !rectRef.current)
-      return
+    if (!itemRef.current || !rectRef.current) return
 
     const xPercentage = (x.current / rectRef.current.width) * 100
 
-    if (xPercentage < -100)
-      x.current = 0
+    if (xPercentage < -100) x.current = 0
 
-    if (xPercentage > 0)
-      x.current = -rectRef.current.width
+    if (xPercentage > 0) x.current = -rectRef.current.width
 
     itemRef.current.style.transform = `translate3d(${xPercentage}%, 0, 0)`
   }
@@ -64,10 +54,7 @@ const MarqueeItem: React.FC<MarqueeItemProps> = (props) => {
   }, [])
 
   return (
-    <motion.div
-      ref={itemRef}
-      className="flex flex-row w-fit"
-    >
+    <motion.div ref={itemRef} className="flex flex-row w-fit">
       {children}
     </motion.div>
   )
@@ -117,8 +104,7 @@ export const InteractiveMarquee: React.FC<MarqueeProps> = (props) => {
     x.current = normalized.pixelY * wheelFactor
 
     // reset speed on scroll end
-    if (isScrolling.current)
-      window.clearTimeout(isScrolling.current)
+    if (isScrolling.current) window.clearTimeout(isScrolling.current)
 
     isScrolling.current = setTimeout(() => {
       speedSpring.set(speed)
@@ -152,19 +138,15 @@ export const InteractiveMarquee: React.FC<MarqueeProps> = (props) => {
      *
      * Without this stop - x.current will mutiple expodentially
      */
-    if (slowDown.current || Math.abs(x.current) < threshold)
-      return
+    if (slowDown.current || Math.abs(x.current) < threshold) return
 
     /**
      * This portion speeds up the spring until it reaches the `threshold`
      */
     x.current *= 0.66
 
-    if (x.current < 0)
-      x.current = Math.min(x.current, 0)
-
-    else
-      x.current = Math.max(x.current, 0)
+    if (x.current < 0) x.current = Math.min(x.current, 0)
+    else x.current = Math.max(x.current, 0)
 
     // speedSpring sets the speed for the marquee items that gets passed to the item components
     speedSpring.set(speed + x.current)
@@ -187,12 +169,8 @@ export const InteractiveMarquee: React.FC<MarqueeProps> = (props) => {
         onDragEnd={handleDragEnd}
         dragElastic={0.000001} // needs to be > 0 ¯\_(ツ)_/¯
       >
-        <MarqueeItem speed={speedSpring}>
-          {children}
-        </MarqueeItem>
-        <MarqueeItem speed={speedSpring}>
-          {children}
-        </MarqueeItem>
+        <MarqueeItem speed={speedSpring}>{children}</MarqueeItem>
+        <MarqueeItem speed={speedSpring}>{children}</MarqueeItem>
       </motion.div>
     </>
   )
